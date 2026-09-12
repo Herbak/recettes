@@ -17,7 +17,7 @@
   ];
 </script>
 
-<Sidebar.Root collapsible="icon">
+<Sidebar.Root collapsible="icon" class="border-t">
   <Sidebar.Header>
     <Sidebar.Menu>
       <Sidebar.MenuItem>

@@ -76,7 +76,7 @@
 
 <ModeWatcher defaultMode="light" />
 
-<Sidebar.Provider>
+<Sidebar.Provider class="border-t">
   <AppSidebar />
   <Sidebar.Inset>
     <header class="flex h-12 items-center gap-2 border-b px-3">
