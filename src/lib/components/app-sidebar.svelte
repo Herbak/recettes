@@ -5,6 +5,7 @@
   import UtensilsIcon from "@lucide/svelte/icons/utensils";
   import CarrotIcon from "@lucide/svelte/icons/carrot";
   import ShoppingCartIcon from "@lucide/svelte/icons/shopping-cart";
+  import DatabaseIcon from "@lucide/svelte/icons/database";
   import ChefHatIcon from "@lucide/svelte/icons/chef-hat";
 
   const items = [
@@ -12,6 +13,7 @@
     { title: "Repas", url: "/repas", icon: UtensilsIcon },
     { title: "Ingrédients", url: "/ingredients", icon: CarrotIcon },
     { title: "Courses", url: "/courses", icon: ShoppingCartIcon },
+    { title: "Données", url: "/donnees", icon: DatabaseIcon },
   ];
 </script>
 

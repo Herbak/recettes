@@ -10,6 +10,12 @@ import {
 } from "./types";
 import { randomizePlan } from "./random";
 import { DEFAULT_CATALOG } from "./seed";
+import {
+  normalizeName,
+  serializeExport,
+  type ExportBundle,
+  type ImportSummary,
+} from "./transfer";
 
 const STORE_FILE = "recettes.json";
 const STORE_KEY = "state";
@@ -216,7 +222,6 @@ class AppStore {
 
   resetWeek() {
     for (const day of this.state.plan) {
-      day.candidates = [];
       day.chosen = null;
     }
     this.state.validated = false;
@@ -224,6 +229,82 @@ class AppStore {
 
   validate() {
     this.state.validated = true;
+  }
+
+  // --- Export / Import ---
+  exportContent(): string {
+    return serializeExport(this.state);
+  }
+
+  replaceContent(bundle: ExportBundle) {
+    this.state.categories = bundle.categories.map((category) => ({ ...category }));
+    this.state.items = bundle.items.map((item) => ({ ...item }));
+    this.state.meals = bundle.meals.map((meal) => ({
+      ...meal,
+      items: meal.items.map((line) => ({ ...line })),
+    }));
+    this.state.plan = emptyState().plan;
+    this.state.validated = false;
+  }
+
+  mergeContent(bundle: ExportBundle): ImportSummary {
+    const categoryMap = new Map<string, string>();
+    let categories = 0;
+    for (const category of bundle.categories) {
+      const existing = this.state.categories.find(
+        (c) => normalizeName(c.name) === normalizeName(category.name),
+      );
+      if (existing) {
+        categoryMap.set(category.id, existing.id);
+      } else {
+        const created: Category = { id: uid(), name: category.name };
+        this.state.categories.push(created);
+        categoryMap.set(category.id, created.id);
+        categories++;
+      }
+    }
+
+    const itemMap = new Map<string, string>();
+    let items = 0;
+    for (const item of bundle.items) {
+      const existing = this.state.items.find(
+        (i) => normalizeName(i.name) === normalizeName(item.name),
+      );
+      if (existing) {
+        itemMap.set(item.id, existing.id);
+      } else {
+        const created: Item = {
+          id: uid(),
+          name: item.name,
+          categoryId: categoryMap.get(item.categoryId) ?? "",
+          unit: item.unit,
+        };
+        this.state.items.push(created);
+        itemMap.set(item.id, created.id);
+        items++;
+      }
+    }
+
+    let meals = 0;
+    for (const meal of bundle.meals) {
+      if (
+        this.state.meals.some(
+          (m) => normalizeName(m.name) === normalizeName(meal.name),
+        )
+      ) {
+        continue;
+      }
+      const lines = meal.items
+        .map((line) => ({
+          itemId: itemMap.get(line.itemId) ?? "",
+          quantity: line.quantity,
+        }))
+        .filter((line) => line.itemId);
+      this.state.meals.push({ id: uid(), name: meal.name, items: lines });
+      meals++;
+    }
+
+    return { categories, items, meals };
   }
 }
 

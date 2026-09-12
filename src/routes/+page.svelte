@@ -16,7 +16,7 @@
 
   const NONE = "__none__";
 
-  let pending = $state<string[]>(Array(7).fill(NONE));
+  let pending = $state<string[]>(Array(7).fill(""));
 
   const filledDays = $derived(app.state.plan.filter((d) => d.chosen).length);
   const hasCandidates = $derived(
@@ -33,9 +33,9 @@
   }
 
   function add(day: number) {
-    if (pending[day] === NONE) return;
+    if (!pending[day]) return;
     app.addCandidate(day, pending[day]);
-    pending[day] = NONE;
+    pending[day] = "";
   }
 
   function randomize() {
@@ -45,7 +45,7 @@
 
   function reset() {
     app.resetWeek();
-    toast("Semaine réinitialisée");
+    toast("Sélection réinitialisée (candidats conservés)");
   }
 
   function validate() {
@@ -66,7 +66,11 @@
     <Button onclick={randomize} disabled={!hasCandidates}>
       <ShuffleIcon /> Randomiser
     </Button>
-    <Button variant="outline" onclick={reset}>
+    <Button
+      variant="outline"
+      onclick={reset}
+      title="Efface les repas du jour sélectionnés, mais conserve les listes de candidats"
+    >
       <RotateCcwIcon /> Réinitialiser
     </Button>
     <Button
@@ -172,7 +176,7 @@
             variant="outline"
             size="icon"
             onclick={() => add(day.day)}
-            disabled={pending[day.day] === NONE}
+            disabled={!pending[day.day]}
             aria-label="Ajouter"
           >
             <PlusIcon />

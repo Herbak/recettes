@@ -39,10 +39,13 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   app data dir; falls back to `localStorage` when running in a plain browser.
 - `src/lib/random.ts` — one pick per day from that day's candidate meals
 - `src/lib/shopping.ts` — aggregation of chosen meals into a category-grouped list
+- `src/lib/transfer.ts` — content export/import (`serializeExport`, `parseExport`,
+  `normalizeName`); the store adds `exportContent`/`replaceContent`/`mergeContent`
 - `src/routes/` — `+layout.svelte` shell; `/` Semaine, `/repas`, `/ingredients`,
-  `/courses`
-- `src-tauri/` — minimal Rust host registering `tauri-plugin-store` and
-  `tauri-plugin-opener` (permissions in `capabilities/default.json`)
+  `/courses`, `/donnees` (export/import content)
+- `src-tauri/` — minimal Rust host registering `tauri-plugin-store`,
+  `tauri-plugin-opener`, `tauri-plugin-dialog` and `tauri-plugin-fs`
+  (permissions in `capabilities/default.json`)
 
 ## UI (shadcn-svelte, Tailwind v4)
 - Config in `components.json` (style `nova`, base color `zinc`, `iconLibrary: lucide`);
@@ -53,7 +56,9 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   separator, table, alert-dialog, alert, sonner, sidebar, tooltip, sheet, skeleton.
 - App shell uses the sidebar layout: `src/lib/components/app-sidebar.svelte` inside
   `Sidebar.Provider` + `Sidebar.Inset` in `src/routes/+layout.svelte` (collapses to
-  icons, toggle via `Sidebar.Trigger`).
+  icons, toggle via `Sidebar.Trigger`). Dark mode is handled by `mode-watcher`
+  (`<ModeWatcher />` + `toggleMode` button in the header); `.dark` tokens live in
+  `src/app.css`.
 - Add more with `pnpm dlx shadcn-svelte@latest add <name>`. The CLI is interactive;
   for non-interactive runs pass the preset `--preset baKeeG` and pipe `y` when it
   prompts (e.g. `"y`n" | pnpm dlx shadcn-svelte@latest ...`).
