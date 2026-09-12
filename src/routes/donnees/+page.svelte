@@ -3,6 +3,7 @@
   import DownloadIcon from "@lucide/svelte/icons/download";
   import UploadIcon from "@lucide/svelte/icons/upload";
   import CopyIcon from "@lucide/svelte/icons/copy";
+  import RotateCcwIcon from "@lucide/svelte/icons/rotate-ccw";
   import { app } from "$lib/store.svelte";
   import { parseExport, type ExportBundle } from "$lib/transfer";
   import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
@@ -17,6 +18,7 @@
   let mode = $state<"replace" | "merge">("replace");
   let pasted = $state("");
   let importError = $state("");
+  let historyOpen = $state(false);
 
   const exportJson = $derived(app.exportContent());
 
@@ -96,6 +98,12 @@
     }
     pending = null;
     pasted = "";
+  }
+
+  function resetHistory() {
+    app.resetUsage();
+    historyOpen = false;
+    toast.success("Historique réinitialisé");
   }
 </script>
 
@@ -238,6 +246,39 @@
           </Button>
         {/if}
       {/if}
+    </Card.Content>
+  </Card.Root>
+
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>Historique des repas</Card.Title>
+      <Card.Description>
+        {Object.keys(app.state.usage).length} repas suivis · {Object.values(
+          app.state.usage,
+        ).reduce((sum, count) => sum + count, 0)} consommations enregistrées.
+      </Card.Description>
+    </Card.Header>
+    <Card.Content>
+      <AlertDialog.Root bind:open={historyOpen}>
+        <AlertDialog.Trigger class={buttonVariants({ variant: "destructive" })}>
+          <RotateCcwIcon /> Réinitialiser l'historique
+        </AlertDialog.Trigger>
+        <AlertDialog.Content>
+          <AlertDialog.Header>
+            <AlertDialog.Title>Réinitialiser l'historique ?</AlertDialog.Title>
+            <AlertDialog.Description>
+              Les compteurs de repas consommés seront remis à zéro. Les
+              catégories, ingrédients et repas ne sont pas modifiés.
+            </AlertDialog.Description>
+          </AlertDialog.Header>
+          <AlertDialog.Footer>
+            <AlertDialog.Cancel>Annuler</AlertDialog.Cancel>
+            <AlertDialog.Action variant="destructive" onclick={resetHistory}>
+              Réinitialiser
+            </AlertDialog.Action>
+          </AlertDialog.Footer>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     </Card.Content>
   </Card.Root>
 </div>

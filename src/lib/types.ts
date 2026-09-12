@@ -40,6 +40,8 @@ export interface AppState {
   meals: Meal[];
   plan: DayPlan[];
   customShopping: CustomShoppingItem[];
+  usage: Record<string, number>;
+  counted: string[];
   validated: boolean;
 }
 
@@ -85,6 +87,8 @@ export function emptyState(): AppState {
       chosen: null,
     })),
     customShopping: [],
+    usage: {},
+    counted: [],
     validated: false,
   };
 }

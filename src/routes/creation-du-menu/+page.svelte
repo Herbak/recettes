@@ -2,21 +2,23 @@
   import { goto } from "$app/navigation";
   import { toast } from "svelte-sonner";
   import ShuffleIcon from "@lucide/svelte/icons/shuffle";
-  import RotateCcwIcon from "@lucide/svelte/icons/rotate-ccw";
+  import CalendarPlusIcon from "@lucide/svelte/icons/calendar-plus";
   import CheckIcon from "@lucide/svelte/icons/check";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import XIcon from "@lucide/svelte/icons/x";
   import { app } from "$lib/store.svelte";
   import { DAYS } from "$lib/types";
-  import { Button } from "$lib/components/ui/button/index.js";
+  import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
   import { Badge } from "$lib/components/ui/badge/index.js";
   import * as Card from "$lib/components/ui/card/index.js";
+  import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
   import { Label } from "$lib/components/ui/label/index.js";
   import * as Select from "$lib/components/ui/select/index.js";
 
   const NONE = "__none__";
 
   let pending = $state<string[]>(Array(7).fill(""));
+  let newWeekOpen = $state(false);
 
   const filledDays = $derived(app.state.plan.filter((d) => d.chosen).length);
   const hasCandidates = $derived(
@@ -25,6 +27,19 @@
 
   function mealName(id: string): string {
     return app.mealById.get(id)?.name ?? "?";
+  }
+
+  function usageCount(mealId: string): number {
+    return app.state.usage[mealId] ?? 0;
+  }
+
+  function usageClass(count: number): string {
+    if (count <= 0) return "";
+    if (count === 1)
+      return "bg-amber-100 text-amber-800 dark:bg-amber-500/20 dark:text-amber-300";
+    if (count === 2)
+      return "bg-violet-100 text-violet-800 dark:bg-violet-500/20 dark:text-violet-300";
+    return "bg-red-100 text-red-800 dark:bg-red-500/20 dark:text-red-300";
   }
 
   function optionsFor(day: number) {
@@ -43,9 +58,10 @@
     toast.success("Menu de la semaine généré");
   }
 
-  function reset() {
-    app.resetWeek();
-    toast("Sélection réinitialisée (candidats conservés)");
+  function newWeek() {
+    app.newWeek();
+    newWeekOpen = false;
+    toast.success("Nouvelle semaine créée");
   }
 
   function validate() {
@@ -66,13 +82,30 @@
     <Button onclick={randomize} disabled={!hasCandidates}>
       <ShuffleIcon /> Randomiser
     </Button>
-    <Button
-      variant="outline"
-      onclick={reset}
-      title="Efface les repas du jour sélectionnés, mais conserve les listes de candidats"
-    >
-      <RotateCcwIcon /> Réinitialiser
-    </Button>
+    <AlertDialog.Root bind:open={newWeekOpen}>
+      <AlertDialog.Trigger
+        class={buttonVariants({ variant: "outline" })}
+        title="Clôt la semaine : vide les repas choisis (candidats conservés) et réarme le comptage"
+      >
+        <CalendarPlusIcon /> Créer une nouvelle semaine
+      </AlertDialog.Trigger>
+      <AlertDialog.Content>
+        <AlertDialog.Header>
+          <AlertDialog.Title>Créer une nouvelle semaine ?</AlertDialog.Title>
+          <AlertDialog.Description>
+            Les repas choisis pour chaque jour seront effacés (les listes de
+            candidats sont conservées) et le comptage des repas consommés sera
+            réarmé.
+          </AlertDialog.Description>
+        </AlertDialog.Header>
+        <AlertDialog.Footer>
+          <AlertDialog.Cancel>Annuler</AlertDialog.Cancel>
+          <AlertDialog.Action onclick={newWeek}>
+            Créer une nouvelle semaine
+          </AlertDialog.Action>
+        </AlertDialog.Footer>
+      </AlertDialog.Content>
+    </AlertDialog.Root>
     <Button
       class="bg-emerald-600 text-white hover:bg-emerald-600/80"
       onclick={validate}
@@ -138,8 +171,14 @@
 
         <div class="flex flex-wrap gap-1.5">
           {#each day.candidates as cid (cid)}
-            <Badge variant="secondary" class="gap-1 pr-1">
+            {@const count = usageCount(cid)}
+            <Badge variant="secondary" class="gap-1 pr-1 {usageClass(count)}">
               {app.mealById.get(cid)?.name ?? "?"}
+              {#if count > 0}
+                <span class="rounded-full px-1 text-[10px] font-semibold tabular-nums">
+                  ×{count}
+                </span>
+              {/if}
               <button
                 class="rounded-full p-0.5 hover:bg-background"
                 onclick={() => app.removeCandidate(day.day, cid)}

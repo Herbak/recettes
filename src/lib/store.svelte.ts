@@ -96,12 +96,21 @@ class AppStore {
           }
         : d;
     });
+    const mealIds = new Set((data.meals ?? []).map((meal) => meal.id));
+    const usage: Record<string, number> = {};
+    for (const [id, count] of Object.entries(data.usage ?? {})) {
+      if (mealIds.has(id) && typeof count === "number") usage[id] = count;
+    }
     return {
       categories: data.categories ?? [],
       items: data.items ?? [],
       meals: data.meals ?? [],
       plan,
       customShopping: Array.isArray(data.customShopping) ? data.customShopping : [],
+      usage,
+      counted: Array.isArray(data.counted)
+        ? data.counted.filter((id) => mealIds.has(id))
+        : [],
       validated: data.validated ?? false,
     };
   }
@@ -203,6 +212,8 @@ class AppStore {
       day.candidates = day.candidates.filter((c) => c !== id);
       if (day.chosen === id) day.chosen = null;
     }
+    delete this.state.usage[id];
+    this.state.counted = this.state.counted.filter((c) => c !== id);
   }
 
   // --- Plan ---
@@ -229,20 +240,41 @@ class AppStore {
   }
 
   randomize() {
-    this.state.plan = randomizePlan(this.state.plan);
+    this.state.plan = randomizePlan(this.state.plan, this.state.usage);
     this.state.validated = false;
     this.shoppingChecked = [];
   }
 
-  resetWeek() {
+  newWeek() {
     for (const day of this.state.plan) {
       day.chosen = null;
     }
+    this.state.counted = [];
     this.state.validated = false;
     this.shoppingChecked = [];
   }
 
   validate() {
+    const chosen = new Set(
+      this.state.plan
+        .map((day) => day.chosen)
+        .filter((id): id is string => !!id),
+    );
+
+    for (const id of chosen) {
+      if (!this.state.counted.includes(id)) {
+        this.state.usage[id] = (this.state.usage[id] ?? 0) + 1;
+      }
+    }
+
+    for (const id of this.state.counted) {
+      if (chosen.has(id)) continue;
+      const next = (this.state.usage[id] ?? 0) - 1;
+      if (next > 0) this.state.usage[id] = next;
+      else delete this.state.usage[id];
+    }
+
+    this.state.counted = [...chosen];
     this.state.validated = true;
   }
 
@@ -297,8 +329,24 @@ class AppStore {
     }));
     this.state.plan = emptyState().plan;
     this.state.customShopping = [];
+    this.state.usage = this.#pruneUsage(bundle.meals.map((m) => m.id));
+    this.state.counted = [];
     this.state.validated = false;
     this.shoppingChecked = [];
+  }
+
+  resetUsage() {
+    this.state.usage = {};
+    this.state.counted = [];
+  }
+
+  #pruneUsage(mealIds: string[]): Record<string, number> {
+    const ids = new Set(mealIds);
+    const usage: Record<string, number> = {};
+    for (const [id, count] of Object.entries(this.state.usage)) {
+      if (ids.has(id)) usage[id] = count;
+    }
+    return usage;
   }
 
   mergeContent(bundle: ExportBundle): ImportSummary {
