@@ -53,7 +53,8 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
 - Components in `src/lib/components/ui/*`, imported as
   `$lib/components/ui/<name>/index.js` (plus `Toaster` from `sonner`, `toast` from
   `svelte-sonner`). Installed: button, input, label, card, badge, select, checkbox,
-  separator, table, alert-dialog, alert, sonner, sidebar, tooltip, sheet, skeleton.
+  separator, table, alert-dialog, alert, sonner, sidebar, tooltip, sheet, skeleton,
+  dialog.
 - App shell uses the sidebar layout: `src/lib/components/app-sidebar.svelte` inside
   `Sidebar.Provider` + `Sidebar.Inset` in `src/routes/+layout.svelte` (collapses to
   icons, toggle via `Sidebar.Trigger`). Dark mode is handled by `mode-watcher`

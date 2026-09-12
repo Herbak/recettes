@@ -2,6 +2,7 @@
   import { toast } from "svelte-sonner";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import XIcon from "@lucide/svelte/icons/x";
+  import SearchIcon from "@lucide/svelte/icons/search";
   import { app } from "$lib/store.svelte";
   import type { Meal, MealItem } from "$lib/types";
   import { formatQty } from "$lib/shopping";
@@ -11,11 +12,25 @@
   import * as Card from "$lib/components/ui/card/index.js";
   import * as Alert from "$lib/components/ui/alert/index.js";
   import * as AlertDialog from "$lib/components/ui/alert-dialog/index.js";
+  import * as Dialog from "$lib/components/ui/dialog/index.js";
   import * as Select from "$lib/components/ui/select/index.js";
 
+  let search = $state("");
+  let dialogOpen = $state(false);
   let editingId = $state<string | null>(null);
   let formName = $state("");
   let formItems = $state<MealItem[]>([]);
+
+  const filtered = $derived(
+    app.state.meals.filter((meal) => {
+      const q = search.trim().toLowerCase();
+      if (!q) return true;
+      if (meal.name.toLowerCase().includes(q)) return true;
+      return meal.items.some((line) =>
+        (app.itemById.get(line.itemId)?.name ?? "").toLowerCase().includes(q),
+      );
+    }),
+  );
 
   function resetForm() {
     editingId = null;
@@ -26,12 +41,14 @@
   function startCreate() {
     resetForm();
     if (app.state.items.length > 0) addLine();
+    dialogOpen = true;
   }
 
   function startEdit(meal: Meal) {
     editingId = meal.id;
     formName = meal.name;
     formItems = meal.items.map((item) => ({ ...item }));
+    dialogOpen = true;
   }
 
   function addLine() {
@@ -53,12 +70,22 @@
       toast.success("Repas créé");
     }
     resetForm();
+    dialogOpen = false;
   }
 
   function remove(meal: Meal) {
     app.removeMeal(meal.id);
     if (editingId === meal.id) resetForm();
     toast.success(`« ${meal.name} » supprimé`);
+  }
+
+  function summary(meal: Meal): string {
+    return meal.items
+      .map((line) => {
+        const item = app.itemById.get(line.itemId);
+        return `${formatQty(line.quantity)} ${item?.unit ?? ""} ${item?.name ?? "?"}`.trim();
+      })
+      .join(" · ");
   }
 </script>
 
@@ -79,19 +106,68 @@
   </Alert.Root>
 {/if}
 
-<div class="grid grid-cols-1 gap-5 lg:grid-cols-5">
-  <Card.Root class="lg:col-span-3">
-    <Card.Header>
-      <Card.Title>{editingId ? "Modifier le repas" : "Nouveau repas"}</Card.Title>
-    </Card.Header>
-    <Card.Content class="flex flex-col gap-4">
+<div class="relative mb-4 max-w-md">
+  <SearchIcon class="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground" />
+  <Input bind:value={search} placeholder="Rechercher un repas ou un ingrédient…" class="pl-8" />
+</div>
+
+<div class="flex flex-col gap-3">
+  {#each filtered as meal (meal.id)}
+    <Card.Root>
+      <Card.Content class="flex flex-wrap items-start justify-between gap-3">
+        <div class="min-w-0 flex-1">
+          <div class="font-medium">{meal.name}</div>
+          {#if meal.items.length > 0}
+            <div class="mt-0.5 text-sm text-muted-foreground">{summary(meal)}</div>
+          {:else}
+            <div class="mt-0.5 text-sm text-muted-foreground">Aucun ingrédient</div>
+          {/if}
+        </div>
+        <div class="flex shrink-0 gap-1">
+          <Button variant="ghost" size="sm" onclick={() => startEdit(meal)}>Modifier</Button>
+          <AlertDialog.Root>
+            <AlertDialog.Trigger class={buttonVariants({ variant: "destructive", size: "sm" })}>
+              Suppr.
+            </AlertDialog.Trigger>
+            <AlertDialog.Content>
+              <AlertDialog.Header>
+                <AlertDialog.Title>Supprimer « {meal.name} » ?</AlertDialog.Title>
+                <AlertDialog.Description>
+                  Cette action est irréversible.
+                </AlertDialog.Description>
+              </AlertDialog.Header>
+              <AlertDialog.Footer>
+                <AlertDialog.Cancel>Annuler</AlertDialog.Cancel>
+                <AlertDialog.Action variant="destructive" onclick={() => remove(meal)}>
+                  Supprimer
+                </AlertDialog.Action>
+              </AlertDialog.Footer>
+            </AlertDialog.Content>
+          </AlertDialog.Root>
+        </div>
+      </Card.Content>
+    </Card.Root>
+  {/each}
+  {#if app.state.meals.length === 0}
+    <p class="text-sm text-muted-foreground">Aucun repas enregistré.</p>
+  {:else if filtered.length === 0}
+    <p class="text-sm text-muted-foreground">Aucun repas ne correspond à « {search} ».</p>
+  {/if}
+</div>
+
+<Dialog.Root bind:open={dialogOpen}>
+  <Dialog.Content class="sm:max-w-lg">
+    <Dialog.Header>
+      <Dialog.Title>{editingId ? "Modifier le repas" : "Nouveau repas"}</Dialog.Title>
+      <Dialog.Description>
+        Ajoutez un nom et les ingrédients avec leurs quantités.
+      </Dialog.Description>
+    </Dialog.Header>
+
+    <div class="flex max-h-[60vh] flex-col gap-4 overflow-y-auto px-0.5 py-1">
       <div class="grid gap-1.5">
         <Label for="meal-name">Nom</Label>
-        <Input
-          id="meal-name"
-          bind:value={formName}
-          placeholder="Ex : Pâtes bolognaise"
-        />
+        <Input id="meal-name" bind:value={formName} placeholder="Ex : Pâtes bolognaise" />
       </div>
 
       <div class="flex flex-col gap-2">
@@ -103,7 +179,7 @@
             onclick={addLine}
             disabled={app.state.items.length === 0}
           >
-            <PlusIcon /> Ajouter un ingrédient
+            <PlusIcon /> Ajouter
           </Button>
         </div>
 
@@ -112,10 +188,7 @@
             <Select.Root
               type="single"
               bind:value={line.itemId}
-              items={app.state.items.map((item) => ({
-                value: item.id,
-                label: item.name,
-              }))}
+              items={app.state.items.map((item) => ({ value: item.id, label: item.name }))}
             >
               <Select.Trigger class="w-full flex-1">
                 <Select.Value placeholder="Ingrédient" />
@@ -126,13 +199,7 @@
                 {/each}
               </Select.Content>
             </Select.Root>
-            <Input
-              type="number"
-              min="0"
-              step="any"
-              bind:value={line.quantity}
-              class="w-20"
-            />
+            <Input type="number" min="0" step="any" bind:value={line.quantity} class="w-20" />
             <span class="w-12 text-xs text-muted-foreground">
               {app.itemById.get(line.itemId)?.unit ?? ""}
             </span>
@@ -150,76 +217,13 @@
           <p class="text-xs text-muted-foreground">Aucun ingrédient dans ce repas.</p>
         {/if}
       </div>
-
-      <div class="flex gap-2">
-        <Button onclick={save} disabled={!formName.trim()}>
-          {editingId ? "Enregistrer" : "Créer le repas"}
-        </Button>
-        {#if editingId}
-          <Button variant="outline" onclick={resetForm}>Annuler</Button>
-        {/if}
-      </div>
-    </Card.Content>
-  </Card.Root>
-
-  <section class="lg:col-span-2">
-    <h2 class="mb-3 font-semibold">Mes repas ({app.state.meals.length})</h2>
-    <div class="flex flex-col gap-3">
-      {#each app.state.meals as meal (meal.id)}
-        <Card.Root size="sm">
-          <Card.Header>
-            <Card.Title class="flex items-start justify-between gap-2">
-              {meal.name}
-              <div class="flex shrink-0 gap-1">
-                <Button variant="ghost" size="sm" onclick={() => startEdit(meal)}>
-                  Modifier
-                </Button>
-                <AlertDialog.Root>
-                  <AlertDialog.Trigger
-                    class={buttonVariants({ variant: "destructive", size: "sm" })}
-                  >
-                    Suppr.
-                  </AlertDialog.Trigger>
-                  <AlertDialog.Content>
-                    <AlertDialog.Header>
-                      <AlertDialog.Title>Supprimer « {meal.name} » ?</AlertDialog.Title>
-                      <AlertDialog.Description>
-                        Cette action est irréversible.
-                      </AlertDialog.Description>
-                    </AlertDialog.Header>
-                    <AlertDialog.Footer>
-                      <AlertDialog.Cancel>Annuler</AlertDialog.Cancel>
-                      <AlertDialog.Action
-                        variant="destructive"
-                        onclick={() => remove(meal)}
-                      >
-                        Supprimer
-                      </AlertDialog.Action>
-                    </AlertDialog.Footer>
-                  </AlertDialog.Content>
-                </AlertDialog.Root>
-              </div>
-            </Card.Title>
-          </Card.Header>
-          <Card.Content>
-            <ul class="flex flex-col gap-0.5 text-sm text-muted-foreground">
-              {#each meal.items as line (line.itemId + line.quantity)}
-                <li>
-                  {app.itemById.get(line.itemId)?.name ?? "?"} :
-                  {formatQty(line.quantity)}
-                  {app.itemById.get(line.itemId)?.unit ?? ""}
-                </li>
-              {/each}
-              {#if meal.items.length === 0}
-                <li>Aucun ingrédient</li>
-              {/if}
-            </ul>
-          </Card.Content>
-        </Card.Root>
-      {/each}
-      {#if app.state.meals.length === 0}
-        <p class="text-sm text-muted-foreground">Aucun repas enregistré.</p>
-      {/if}
     </div>
-  </section>
-</div>
+
+    <Dialog.Footer>
+      <Button variant="outline" onclick={() => (dialogOpen = false)}>Annuler</Button>
+      <Button onclick={save} disabled={!formName.trim()}>
+        {editingId ? "Enregistrer" : "Créer le repas"}
+      </Button>
+    </Dialog.Footer>
+  </Dialog.Content>
+</Dialog.Root>
