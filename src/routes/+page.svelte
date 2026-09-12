@@ -121,8 +121,8 @@
               onValueChange={(value) =>
                 app.setChosen(day.day, !value || value === NONE ? null : value)}
             >
-              <Select.Trigger id="day-{day.day}" class="w-full">
-                <Select.Value placeholder="— Aucun —" />
+              <Select.Trigger id="day-{day.day}" class="w-full min-w-0 overflow-hidden">
+                <Select.Value class="truncate" placeholder="— Aucun —" />
               </Select.Trigger>
               <Select.Content>
                 <Select.Item value={NONE} label="— Aucun —">— Aucun —</Select.Item>
@@ -163,8 +163,8 @@
               label: meal.name,
             }))}
           >
-            <Select.Trigger class="w-full flex-1">
-              <Select.Value placeholder="Ajouter un repas…" />
+            <Select.Trigger class="w-full min-w-0 flex-1 overflow-hidden">
+              <Select.Value class="truncate" placeholder="Ajouter un repas…" />
             </Select.Trigger>
             <Select.Content>
               {#each optionsFor(day.day) as meal (meal.id)}
