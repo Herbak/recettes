@@ -31,6 +31,24 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   On first launch macOS blocks it: use right-click → Open, or
   `xattr -cr /Applications/recettes.app`. Clean installs need an Apple Developer
   ID + notarization.
+- Releases are **published** (not drafts) so the updater's `latest.json` is
+  reachable at `.../releases/latest/download/latest.json`.
+
+## Auto-update (tauri-plugin-updater)
+- `tauri-plugin-updater` + `tauri-plugin-process` are registered in `lib.rs`
+  (updater desktop-only); permissions `updater:default` + `process:default`.
+- `tauri.conf.json`: `bundle.createUpdaterArtifacts: true` and
+  `plugins.updater` (`pubkey` + GitHub `latest.json` endpoint).
+- Signing keys (minisign, separate from Apple): generated locally at
+  `%USERPROFILE%\.tauri\recettes.key` (+ `.pub`). The **public** key lives in
+  `plugins.updater.pubkey`; the **private** key must be the CI secret
+  `TAURI_SIGNING_PRIVATE_KEY` (and `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` if set).
+  Losing the private key breaks all future updates.
+- On launch the app calls `check()`; if a newer version exists it offers to
+  download/install then `relaunch()` (see `src/routes/+layout.svelte`).
+- Ad-hoc signing means macOS may still require confirmation after an update;
+  silent updates need an Apple Developer ID + notarization.
+- Installs predating the updater must be replaced manually once.
 
 ## Architecture
 - `src/lib/types.ts` — data model (`Category`, `Item`, `Meal`, `DayPlan`, `AppState`).
