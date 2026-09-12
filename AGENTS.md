@@ -33,7 +33,10 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   ID + notarization.
 
 ## Architecture
-- `src/lib/types.ts` — data model (`Category`, `Item`, `Meal`, `DayPlan`, `AppState`)
+- `src/lib/types.ts` — data model (`Category`, `Item`, `Meal`, `DayPlan`, `AppState`).
+  `Item.unit` is a comma-separated list of allowed units (ex: `"g, unité"`) and
+  `MealItem.unit` optionally overrides which one a meal line uses; helpers
+  `itemUnits` / `primaryUnit` / `lineUnit`.
 - `src/lib/store.svelte.ts` — runes-based global store + persistence (CRUD, plan,
   randomize/validate). Persists via `tauri-plugin-store` to `recettes.json` in the
   app data dir; falls back to `localStorage` when running in a plain browser.

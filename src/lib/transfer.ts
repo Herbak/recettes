@@ -100,10 +100,11 @@ export function parseExport(text: string): ExportBundle {
       const itemId = asString(line.itemId);
       const quantity =
         typeof line.quantity === "number" ? line.quantity : Number(line.quantity);
+      const unit = asString(line.unit);
       if (!itemId || !Number.isFinite(quantity)) {
         throw new Error(`Ingrédient invalide dans le repas « ${name} ».`);
       }
-      lines.push({ itemId, quantity });
+      lines.push({ itemId, quantity, ...(unit ? { unit } : {}) });
     }
     meals.push({ id, name, items: lines });
   }

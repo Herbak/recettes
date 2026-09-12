@@ -138,7 +138,12 @@
               {/each}
             </Select.Content>
           </Select.Root>
-          <Input bind:value={newItemUnit} placeholder="Unité" class="w-24" />
+          <Input
+            bind:value={newItemUnit}
+            placeholder="Unité(s)"
+            title="Plusieurs unités possibles, séparées par des virgules (ex : g, unité)"
+            class="w-28"
+          />
           <Button onclick={addItem} disabled={!newItemName.trim()}>Ajouter</Button>
         </div>
       </Card.Content>
@@ -151,7 +156,7 @@
             <Table.Row>
               <Table.Head>Ingrédient</Table.Head>
               <Table.Head>Catégorie</Table.Head>
-              <Table.Head>Unité</Table.Head>
+              <Table.Head>Unités</Table.Head>
               <Table.Head></Table.Head>
             </Table.Row>
           </Table.Header>
@@ -189,7 +194,12 @@
                   </Select.Root>
                 </Table.Cell>
                 <Table.Cell>
-                  <Input bind:value={item.unit} class="w-24" />
+                  <Input
+                    bind:value={item.unit}
+                    placeholder="g, unité"
+                    title="Plusieurs unités possibles, séparées par des virgules"
+                    class="w-28"
+                  />
                 </Table.Cell>
                 <Table.Cell class="text-right">
                   <AlertDialog.Root>

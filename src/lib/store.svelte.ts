@@ -268,6 +268,7 @@ class AppStore {
         .map((line) => ({
           itemId: itemMap.get(line.itemId) ?? "",
           quantity: line.quantity,
+          ...(line.unit ? { unit: line.unit } : {}),
         }))
         .filter((line) => line.itemId);
       this.state.meals.push({ id: uid(), name: meal.name, items: lines });

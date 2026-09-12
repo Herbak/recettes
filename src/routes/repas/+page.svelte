@@ -4,7 +4,7 @@
   import XIcon from "@lucide/svelte/icons/x";
   import SearchIcon from "@lucide/svelte/icons/search";
   import { app } from "$lib/store.svelte";
-  import type { Meal, MealItem } from "$lib/types";
+  import { itemUnits, lineUnit, primaryUnit, type Meal, type MealItem } from "$lib/types";
   import { formatQty } from "$lib/shopping";
   import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
   import { Input } from "$lib/components/ui/input/index.js";
@@ -52,7 +52,12 @@
   }
 
   function addLine() {
-    formItems.push({ itemId: app.state.items[0]?.id ?? "", quantity: 1 });
+    const item = app.state.items[0];
+    formItems.push({
+      itemId: item?.id ?? "",
+      quantity: 1,
+      unit: primaryUnit(item),
+    });
   }
 
   function removeLine(index: number) {
@@ -83,7 +88,7 @@
     return meal.items
       .map((line) => {
         const item = app.itemById.get(line.itemId);
-        return `${formatQty(line.quantity)} ${item?.unit ?? ""} ${item?.name ?? "?"}`.trim();
+        return `${formatQty(line.quantity)} ${lineUnit(line.unit, item)} ${item?.name ?? "?"}`.trim();
       })
       .join(" · ");
   }
@@ -187,10 +192,14 @@
           <div class="flex items-center gap-2">
             <Select.Root
               type="single"
-              bind:value={line.itemId}
+              value={line.itemId}
               items={app.state.items.map((item) => ({ value: item.id, label: item.name }))}
+              onValueChange={(value) => {
+                line.itemId = value ?? "";
+                line.unit = primaryUnit(app.itemById.get(value ?? ""));
+              }}
             >
-              <Select.Trigger class="w-full flex-1">
+              <Select.Trigger class="w-full min-w-0 flex-1">
                 <Select.Value placeholder="Ingrédient" />
               </Select.Trigger>
               <Select.Content>
@@ -200,9 +209,28 @@
               </Select.Content>
             </Select.Root>
             <Input type="number" min="0" step="any" bind:value={line.quantity} class="w-20" />
-            <span class="w-12 text-xs text-muted-foreground">
-              {app.itemById.get(line.itemId)?.unit ?? ""}
-            </span>
+            {#if itemUnits(app.itemById.get(line.itemId)).length > 0}
+              <Select.Root
+                type="single"
+                value={lineUnit(line.unit, app.itemById.get(line.itemId))}
+                items={itemUnits(app.itemById.get(line.itemId)).map((unit) => ({
+                  value: unit,
+                  label: unit,
+                }))}
+                onValueChange={(value) => (line.unit = value ?? "")}
+              >
+                <Select.Trigger class="w-28 min-w-0">
+                  <Select.Value placeholder="unité" />
+                </Select.Trigger>
+                <Select.Content>
+                  {#each itemUnits(app.itemById.get(line.itemId)) as unit (unit)}
+                    <Select.Item value={unit} label={unit}>{unit}</Select.Item>
+                  {/each}
+                </Select.Content>
+              </Select.Root>
+            {:else}
+              <Input bind:value={line.unit} class="w-24" placeholder="unité" />
+            {/if}
             <Button
               variant="ghost"
               size="icon-sm"

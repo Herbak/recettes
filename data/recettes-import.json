@@ -97,7 +97,7 @@
       "id": "item-11",
       "name": "Lardons",
       "categoryId": "cat-1",
-      "unit": "g"
+      "unit": "g, barquette"
     },
     {
       "id": "item-12",
@@ -205,13 +205,13 @@
       "id": "item-29",
       "name": "Carottes",
       "categoryId": "cat-2",
-      "unit": "unité"
+      "unit": "unité, g"
     },
     {
       "id": "item-30",
       "name": "Pommes de terre",
       "categoryId": "cat-2",
-      "unit": "g"
+      "unit": "g, unité"
     },
     {
       "id": "item-31",
@@ -271,7 +271,7 @@
       "id": "item-40",
       "name": "Courgettes",
       "categoryId": "cat-2",
-      "unit": "unité"
+      "unit": "unité, g"
     },
     {
       "id": "item-41",
@@ -439,7 +439,7 @@
       "id": "item-68",
       "name": "Crème fraîche",
       "categoryId": "cat-3",
-      "unit": "ml"
+      "unit": "ml, cuillère à soupe"
     },
     {
       "id": "item-69",
@@ -577,19 +577,19 @@
       "id": "item-91",
       "name": "Bouillon de bœuf",
       "categoryId": "cat-4",
-      "unit": "ml"
+      "unit": "ml, cube"
     },
     {
       "id": "item-92",
       "name": "Bouillon de volaille",
       "categoryId": "cat-4",
-      "unit": "ml"
+      "unit": "ml, cube"
     },
     {
       "id": "item-93",
       "name": "Bouillon de légumes",
       "categoryId": "cat-4",
-      "unit": "ml"
+      "unit": "ml, cube"
     },
     {
       "id": "item-94",
@@ -607,7 +607,7 @@
       "id": "item-96",
       "name": "Concentré de tomates",
       "categoryId": "cat-4",
-      "unit": "cuillère à soupe"
+      "unit": "cuillère à soupe, boîte"
     },
     {
       "id": "item-97",
@@ -963,7 +963,8 @@
         },
         {
           "itemId": "item-29",
-          "quantity": 5
+          "quantity": 500,
+          "unit": "g"
         },
         {
           "itemId": "item-30",
@@ -1055,7 +1056,8 @@
         },
         {
           "itemId": "item-68",
-          "quantity": 30
+          "quantity": 2,
+          "unit": "cuillère à soupe"
         },
         {
           "itemId": "item-62",
@@ -1187,7 +1189,8 @@
         },
         {
           "itemId": "item-11",
-          "quantity": 200
+          "quantity": 1,
+          "unit": "barquette"
         },
         {
           "itemId": "item-32",
@@ -1219,7 +1222,8 @@
         },
         {
           "itemId": "item-68",
-          "quantity": 30
+          "quantity": 2,
+          "unit": "cuillère à soupe"
         },
         {
           "itemId": "item-112",
@@ -1257,7 +1261,8 @@
         },
         {
           "itemId": "item-92",
-          "quantity": 250
+          "quantity": 1,
+          "unit": "cube"
         },
         {
           "itemId": "item-28",
@@ -1459,7 +1464,8 @@
         },
         {
           "itemId": "item-91",
-          "quantity": 250
+          "quantity": 1,
+          "unit": "cube"
         },
         {
           "itemId": "item-111",
@@ -1861,7 +1867,8 @@
         },
         {
           "itemId": "item-40",
-          "quantity": 2
+          "quantity": 350,
+          "unit": "g"
         }
       ]
     },
@@ -1887,7 +1894,8 @@
         },
         {
           "itemId": "item-93",
-          "quantity": 250
+          "quantity": 1,
+          "unit": "cube"
         },
         {
           "itemId": "item-136",
@@ -1917,7 +1925,8 @@
         },
         {
           "itemId": "item-92",
-          "quantity": 250
+          "quantity": 1,
+          "unit": "cube"
         },
         {
           "itemId": "item-80",
@@ -2254,7 +2263,8 @@
         },
         {
           "itemId": "item-30",
-          "quantity": 400
+          "quantity": 4,
+          "unit": "unité"
         },
         {
           "itemId": "item-32",
@@ -2270,7 +2280,8 @@
         },
         {
           "itemId": "item-91",
-          "quantity": 250
+          "quantity": 1,
+          "unit": "cube"
         },
         {
           "itemId": "item-114",
@@ -2458,11 +2469,13 @@
         },
         {
           "itemId": "item-96",
-          "quantity": 4
+          "quantity": 1,
+          "unit": "boîte"
         },
         {
           "itemId": "item-92",
-          "quantity": 250
+          "quantity": 1,
+          "unit": "cube"
         }
       ]
     },
@@ -2610,7 +2623,8 @@
         },
         {
           "itemId": "item-30",
-          "quantity": 200
+          "quantity": 2,
+          "unit": "unité"
         },
         {
           "itemId": "item-32",

@@ -85,17 +85,17 @@
         </Card.Header>
         <Card.Content>
           <ul class="flex flex-col gap-3">
-            {#each group.lines as line (line.itemId)}
+            {#each group.lines as line (line.itemId + "\u0000" + line.unit)}
               <li class="flex items-start gap-2">
                 <Checkbox
                   class="mt-0.5"
-                  checked={checked.includes(line.itemId)}
-                  onCheckedChange={() => toggle(line.itemId)}
+                  checked={checked.includes(line.itemId + "\u0000" + line.unit)}
+                  onCheckedChange={() => toggle(line.itemId + "\u0000" + line.unit)}
                 />
                 <div class="min-w-0 flex-1">
                   <div class="flex items-baseline justify-between gap-2">
                     <span
-                      class="text-sm font-medium {checked.includes(line.itemId)
+                      class="text-sm font-medium {checked.includes(line.itemId + "\u0000" + line.unit)
                         ? 'line-through text-muted-foreground'
                         : ''}"
                     >

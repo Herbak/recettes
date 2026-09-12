@@ -1,4 +1,4 @@
-import type { Category, Item, Meal } from "./types";
+import { lineUnit, type Category, type Item, type Meal } from "./types";
 
 export interface ShoppingLine {
   itemId: string;
@@ -24,20 +24,28 @@ export function buildShoppingList(
   items: Map<string, Item>,
   categories: Map<string, Category>,
 ): ShoppingGroup[] {
-  const agg = new Map<string, { total: number; meals: Set<string> }>();
+  const agg = new Map<
+    string,
+    { itemId: string; unit: string; total: number; meals: Set<string> }
+  >();
 
   for (const meal of chosenMeals) {
     for (const line of meal.items) {
-      const entry = agg.get(line.itemId) ?? { total: 0, meals: new Set<string>() };
+      const item = items.get(line.itemId);
+      const unit = lineUnit(line.unit, item);
+      const key = `${line.itemId}\u0000${unit}`;
+      const entry =
+        agg.get(key) ??
+        { itemId: line.itemId, unit, total: 0, meals: new Set<string>() };
       entry.total += line.quantity;
       entry.meals.add(meal.name);
-      agg.set(line.itemId, entry);
+      agg.set(key, entry);
     }
   }
 
   const groups = new Map<string, ShoppingGroup>();
 
-  for (const [itemId, { total, meals }] of agg) {
+  for (const { itemId, unit, total, meals } of agg.values()) {
     const item = items.get(itemId);
     const catId = item?.categoryId ?? "";
     const catName = catId
@@ -52,7 +60,7 @@ export function buildShoppingList(
     group.lines.push({
       itemId,
       itemName: item?.name ?? "Ingrédient inconnu",
-      unit: item?.unit ?? "",
+      unit,
       total,
       meals: [...meals],
     });
@@ -62,7 +70,10 @@ export function buildShoppingList(
   const result = [...groups.values()];
   result.sort((a, b) => a.categoryName.localeCompare(b.categoryName, "fr"));
   for (const group of result) {
-    group.lines.sort((a, b) => a.itemName.localeCompare(b.itemName, "fr"));
+    group.lines.sort(
+      (a, b) =>
+        a.itemName.localeCompare(b.itemName, "fr") || a.unit.localeCompare(b.unit, "fr"),
+    );
   }
   return result;
 }
