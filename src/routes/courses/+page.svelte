@@ -21,14 +21,6 @@
     buildShoppingList(chosenMeals, app.itemById, app.categoryById),
   );
 
-  let checked = $state<string[]>([]);
-
-  function toggle(itemId: string) {
-    checked = checked.includes(itemId)
-      ? checked.filter((id) => id !== itemId)
-      : [...checked, itemId];
-  }
-
   async function copy() {
     try {
       await navigator.clipboard.writeText(shoppingListToText(groups));
@@ -57,7 +49,7 @@
   <Card.Root>
     <Card.Content class="py-6 text-center text-sm text-muted-foreground">
       Aucun repas sélectionné. Rendez-vous dans
-      <a href="/" class="font-medium text-primary underline">Semaine</a>
+      <a href="/creation-du-menu" class="font-medium text-primary underline">Création du menu</a>
       pour randomiser votre menu.
     </Card.Content>
   </Card.Root>
@@ -89,13 +81,13 @@
               <li class="flex items-start gap-2">
                 <Checkbox
                   class="mt-0.5"
-                  checked={checked.includes(line.itemId + "\u0000" + line.unit)}
-                  onCheckedChange={() => toggle(line.itemId + "\u0000" + line.unit)}
+                  checked={app.isShoppingChecked(line.itemId, line.unit)}
+                  onCheckedChange={() => app.toggleShopping(line.itemId, line.unit)}
                 />
                 <div class="min-w-0 flex-1">
                   <div class="flex items-baseline justify-between gap-2">
                     <span
-                      class="text-sm font-medium {checked.includes(line.itemId + "\u0000" + line.unit)
+                      class="text-sm font-medium {app.isShoppingChecked(line.itemId, line.unit)
                         ? 'line-through text-muted-foreground'
                         : ''}"
                     >

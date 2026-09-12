@@ -9,6 +9,7 @@ import {
   type MealItem,
 } from "./types";
 import { randomizePlan } from "./random";
+import { buildShoppingList } from "./shopping";
 import {
   normalizeName,
   serializeExport,
@@ -32,6 +33,38 @@ class AppStore {
   itemById = $derived(new Map(this.state.items.map((i) => [i.id, i])));
   categoryById = $derived(new Map(this.state.categories.map((c) => [c.id, c])));
   mealById = $derived(new Map(this.state.meals.map((m) => [m.id, m])));
+
+  chosenMeals = $derived(
+    this.state.plan
+      .map((d) => d.chosen)
+      .filter((id): id is string => !!id)
+      .map((id) => this.mealById.get(id))
+      .filter((m): m is Meal => !!m),
+  );
+
+  shoppingChecked = $state<string[]>([]);
+
+  shoppingGroups = $derived(
+    buildShoppingList(this.chosenMeals, this.itemById, this.categoryById),
+  );
+
+  shoppingTotal = $derived(
+    this.shoppingGroups.reduce((n, g) => n + g.lines.length, 0),
+  );
+
+  shoppingRemaining = $derived(
+    this.shoppingGroups.reduce(
+      (n, g) =>
+        n +
+        g.lines.filter((l) => !this.shoppingChecked.includes(`${l.itemId}\u0000${l.unit}`))
+          .length,
+      0,
+    ),
+  );
+
+  shoppingDone = $derived(
+    this.shoppingTotal > 0 && this.shoppingRemaining === 0,
+  );
 
   async init() {
     const data = await this.#load();
@@ -188,6 +221,7 @@ class AppStore {
   randomize() {
     this.state.plan = randomizePlan(this.state.plan);
     this.state.validated = false;
+    this.shoppingChecked = [];
   }
 
   resetWeek() {
@@ -195,10 +229,27 @@ class AppStore {
       day.chosen = null;
     }
     this.state.validated = false;
+    this.shoppingChecked = [];
   }
 
   validate() {
     this.state.validated = true;
+  }
+
+  // --- Shopping list ---
+  isShoppingChecked(itemId: string, unit: string): boolean {
+    return this.shoppingChecked.includes(`${itemId}\u0000${unit}`);
+  }
+
+  toggleShopping(itemId: string, unit: string) {
+    const key = `${itemId}\u0000${unit}`;
+    this.shoppingChecked = this.shoppingChecked.includes(key)
+      ? this.shoppingChecked.filter((k) => k !== key)
+      : [...this.shoppingChecked, key];
+  }
+
+  resetShopping() {
+    this.shoppingChecked = [];
   }
 
   // --- Export / Import ---
@@ -215,6 +266,7 @@ class AppStore {
     }));
     this.state.plan = emptyState().plan;
     this.state.validated = false;
+    this.shoppingChecked = [];
   }
 
   mergeContent(bundle: ExportBundle): ImportSummary {
