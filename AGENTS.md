@@ -50,7 +50,10 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
 - Components in `src/lib/components/ui/*`, imported as
   `$lib/components/ui/<name>/index.js` (plus `Toaster` from `sonner`, `toast` from
   `svelte-sonner`). Installed: button, input, label, card, badge, select, checkbox,
-  separator, table, alert-dialog, alert, sonner.
+  separator, table, alert-dialog, alert, sonner, sidebar, tooltip, sheet, skeleton.
+- App shell uses the sidebar layout: `src/lib/components/app-sidebar.svelte` inside
+  `Sidebar.Provider` + `Sidebar.Inset` in `src/routes/+layout.svelte` (collapses to
+  icons, toggle via `Sidebar.Trigger`).
 - Add more with `pnpm dlx shadcn-svelte@latest add <name>`. The CLI is interactive;
   for non-interactive runs pass the preset `--preset baKeeG` and pipe `y` when it
   prompts (e.g. `"y`n" | pnpm dlx shadcn-svelte@latest ...`).
