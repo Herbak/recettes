@@ -1,5 +1,6 @@
 <script lang="ts">
   import XIcon from "@lucide/svelte/icons/x";
+  import SearchIcon from "@lucide/svelte/icons/search";
   import { app } from "$lib/store.svelte";
   import { Button, buttonVariants } from "$lib/components/ui/button/index.js";
   import { Input } from "$lib/components/ui/input/index.js";
@@ -13,6 +14,20 @@
   let newItemName = $state("");
   let newItemCategory = $state("");
   let newItemUnit = $state("");
+
+  let search = $state("");
+
+  const filtered = $derived(
+    app.state.items.filter((item) => {
+      const q = search.trim().toLowerCase();
+      if (!q) return true;
+      const category = app.categoryById.get(item.categoryId)?.name ?? "";
+      return (
+        item.name.toLowerCase().includes(q) ||
+        category.toLowerCase().includes(q)
+      );
+    }),
+  );
 
   function addItem() {
     if (!newItemName.trim()) return;
@@ -75,7 +90,17 @@
   </Card.Root>
 
   <Card.Root>
-    <Card.Content class="pt-0">
+    <Card.Content>
+      <div class="relative mb-4 max-w-md">
+        <SearchIcon
+          class="absolute top-1/2 left-2.5 size-4 -translate-y-1/2 text-muted-foreground"
+        />
+        <Input
+          bind:value={search}
+          placeholder="Rechercher un ingrédient…"
+          class="pl-8"
+        />
+      </div>
       <Table.Root>
         <Table.Header>
           <Table.Row>
@@ -86,7 +111,7 @@
           </Table.Row>
         </Table.Header>
         <Table.Body>
-          {#each app.state.items as item (item.id)}
+          {#each filtered as item (item.id)}
             <Table.Row>
               <Table.Cell>
                 <Input bind:value={item.name} />
@@ -159,6 +184,12 @@
             <Table.Row>
               <Table.Cell colspan={4} class="py-4 text-center text-muted-foreground">
                 Aucun ingrédient.
+              </Table.Cell>
+            </Table.Row>
+          {:else if filtered.length === 0}
+            <Table.Row>
+              <Table.Cell colspan={4} class="py-4 text-center text-muted-foreground">
+                Aucun ingrédient ne correspond à « {search} ».
               </Table.Cell>
             </Table.Row>
           {/if}
