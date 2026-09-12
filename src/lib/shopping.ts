@@ -53,6 +53,14 @@ export function buildShoppingList(
 
   const groups = new Map<string, ShoppingGroup>();
 
+  for (const category of categories.values()) {
+    groups.set(category.id, {
+      categoryId: category.id,
+      categoryName: category.name,
+      lines: [],
+    });
+  }
+
   for (const { itemId, unit, total, meals } of agg.values()) {
     const item = items.get(itemId);
     const catId = item?.categoryId ?? "";
@@ -111,6 +119,7 @@ export function buildShoppingList(
 export function shoppingListToText(groups: ShoppingGroup[]): string {
   const lines: string[] = ["Liste de courses", ""];
   for (const group of groups) {
+    if (group.lines.length === 0) continue;
     lines.push(`${group.categoryName}`);
     for (const line of group.lines) {
       if (line.custom) {

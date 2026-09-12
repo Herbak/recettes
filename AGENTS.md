@@ -60,12 +60,14 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   randomize/validate). Persists via `tauri-plugin-store` to `recettes.json` in the
   app data dir; falls back to `localStorage` when running in a plain browser.
   `AppState.usage` (meal → times consumed) increments on "Valider la semaine"
-  (once per meal until "Créer une nouvelle semaine" clears `counted`); local-only,
+  (once per meal until "Créer une nouvelle semaine" clears `counted` and the
+  free-form `customShopping` items, which only apply to one week); local-only,
   not exported. The planner tints candidate chips by count.
 - `src/lib/random.ts` — one pick per day from that day's candidate meals,
   weighted by `AppState.usage` (already-eaten meals are less likely)
 - `src/lib/shopping.ts` — aggregation of chosen meals into a category-grouped list;
-  `buildShoppingList` also appends free-form `customShopping` items (`custom: true`)
+  every category is listed even when empty (so free-form `customShopping` items can
+  be added anywhere); those lines are flagged `custom: true`
 - `src/lib/transfer.ts` — content export/import (`serializeExport`, `parseExport`,
   `normalizeName`); the store adds `exportContent`/`replaceContent`/`mergeContent`
 - `src/routes/` — `+layout.svelte` shell; `/` Cette semaine, `/creation-du-menu`

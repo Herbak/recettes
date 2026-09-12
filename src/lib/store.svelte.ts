@@ -249,6 +249,7 @@ class AppStore {
     for (const day of this.state.plan) {
       day.chosen = null;
     }
+    this.state.customShopping = [];
     this.state.counted = [];
     this.state.validated = false;
     this.shoppingChecked = [];

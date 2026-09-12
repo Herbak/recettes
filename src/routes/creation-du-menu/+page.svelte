@@ -94,8 +94,9 @@
           <AlertDialog.Title>Créer une nouvelle semaine ?</AlertDialog.Title>
           <AlertDialog.Description>
             Les repas choisis pour chaque jour seront effacés (les listes de
-            candidats sont conservées) et le comptage des repas consommés sera
-            réarmé.
+            candidats sont conservées), les articles ajoutés à la main dans la
+            liste de courses seront supprimés, et le comptage des repas
+            consommés sera réarmé.
           </AlertDialog.Description>
         </AlertDialog.Header>
         <AlertDialog.Footer>

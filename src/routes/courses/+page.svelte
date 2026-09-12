@@ -13,6 +13,7 @@
   import { Input } from "$lib/components/ui/input/index.js";
   import { Label } from "$lib/components/ui/label/index.js";
   import * as Card from "$lib/components/ui/card/index.js";
+  import * as Alert from "$lib/components/ui/alert/index.js";
   import * as ButtonGroup from "$lib/components/ui/button-group/index.js";
   import * as Dialog from "$lib/components/ui/dialog/index.js";
 
@@ -81,7 +82,7 @@
     <Badge class="bg-amber-100 text-amber-700">Semaine non validée</Badge>
   {/if}
 
-  <Button variant="outline" class="ml-auto" onclick={copy} disabled={groups.length === 0}>
+  <Button variant="outline" class="ml-auto" onclick={copy} disabled={app.shoppingTotal === 0}>
     <CopyIcon /> Copier la liste
   </Button>
 </div>
@@ -95,8 +96,18 @@
     </Card.Content>
   </Card.Root>
 {:else}
+  {#if chosenMeals.length === 0}
+    <Alert.Root class="mb-5">
+      <Alert.Title>Aucun repas sélectionné</Alert.Title>
+      <Alert.Description>
+        Vous pouvez tout de même ajouter des articles librement, ou composer un
+        menu depuis
+        <a href="/creation-du-menu" class="font-medium underline">Création du menu</a>.
+      </Alert.Description>
+    </Alert.Root>
+  {/if}
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-    {#each groups as group (group.categoryName)}
+    {#each groups as group (group.categoryId ?? "__none__")}
       <Card.Root>
         <Card.Header>
           <Card.Title>{group.categoryName}</Card.Title>
