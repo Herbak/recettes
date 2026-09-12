@@ -71,7 +71,8 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
 - `src/lib/transfer.ts` — content export/import (`serializeExport`, `parseExport`,
   `normalizeName`); the store adds `exportContent`/`replaceContent`/`mergeContent`
 - `src/routes/` — `+layout.svelte` shell; `/` Cette semaine, `/creation-du-menu`
-  (planner), `/repas`, `/ingredients`, `/courses`, `/donnees` (export/import content)
+  (planner), `/repas`, `/categories`, `/ingredients`, `/courses`, `/donnees`
+  (export/import content)
 - `src-tauri/` — minimal Rust host registering `tauri-plugin-store`,
   `tauri-plugin-opener`, `tauri-plugin-dialog` and `tauri-plugin-fs`
   (permissions in `capabilities/default.json`)

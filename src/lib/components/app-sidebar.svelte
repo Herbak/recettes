@@ -6,6 +6,7 @@
   import CalendarCheckIcon from "@lucide/svelte/icons/calendar-check";
   import UtensilsIcon from "@lucide/svelte/icons/utensils";
   import CarrotIcon from "@lucide/svelte/icons/carrot";
+  import TagsIcon from "@lucide/svelte/icons/tags";
   import ShoppingCartIcon from "@lucide/svelte/icons/shopping-cart";
   import DatabaseIcon from "@lucide/svelte/icons/database";
   import CheckIcon from "@lucide/svelte/icons/check";
@@ -14,6 +15,7 @@
   const items = [
     { title: "Menu", url: "/creation-du-menu", icon: CalendarDaysIcon },
     { title: "Repas", url: "/repas", icon: UtensilsIcon },
+    { title: "Catégories", url: "/categories", icon: TagsIcon },
     { title: "Ingrédients", url: "/ingredients", icon: CarrotIcon },
   ];
 </script>
