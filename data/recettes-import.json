@@ -1,0 +1,2736 @@
+{
+  "app": "recettes",
+  "version": 1,
+  "exportedAt": "2026-09-12T13:34:35.884Z",
+  "categories": [
+    {
+      "id": "cat-1",
+      "name": "Protéines"
+    },
+    {
+      "id": "cat-2",
+      "name": "Légumes"
+    },
+    {
+      "id": "cat-3",
+      "name": "Crèmerie"
+    },
+    {
+      "id": "cat-4",
+      "name": "Épicerie salée"
+    },
+    {
+      "id": "cat-5",
+      "name": "Épicerie sucrée"
+    },
+    {
+      "id": "cat-6",
+      "name": "Surgelés"
+    },
+    {
+      "id": "cat-7",
+      "name": "Frais du jour"
+    }
+  ],
+  "items": [
+    {
+      "id": "item-1",
+      "name": "Filet mignon de porc",
+      "categoryId": "cat-1",
+      "unit": "unité"
+    },
+    {
+      "id": "item-2",
+      "name": "Bœuf à bourguignon",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-3",
+      "name": "Bœuf à effilocher",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-4",
+      "name": "Bœuf haché",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-5",
+      "name": "Chair à saucisse",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-6",
+      "name": "Steak haché",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-7",
+      "name": "Steak",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-8",
+      "name": "Côtes de porc",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-9",
+      "name": "Sauté de porc",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-10",
+      "name": "Porc",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-11",
+      "name": "Lardons",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-12",
+      "name": "Blancs de poulet",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-13",
+      "name": "Cuisses de poulet",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-14",
+      "name": "Pilons de poulet",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-15",
+      "name": "Poulet en morceaux",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-16",
+      "name": "Paupiettes",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-17",
+      "name": "Magret de canard",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-18",
+      "name": "Merguez",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-19",
+      "name": "Cordons bleus",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-20",
+      "name": "Jambon",
+      "categoryId": "cat-1",
+      "unit": "tranche"
+    },
+    {
+      "id": "item-21",
+      "name": "Bacon",
+      "categoryId": "cat-1",
+      "unit": "g"
+    },
+    {
+      "id": "item-22",
+      "name": "Dinde",
+      "categoryId": "cat-1",
+      "unit": "tranche"
+    },
+    {
+      "id": "item-23",
+      "name": "Saumon",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-24",
+      "name": "Saumon fumé",
+      "categoryId": "cat-1",
+      "unit": "tranche"
+    },
+    {
+      "id": "item-25",
+      "name": "Cabillaud",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-26",
+      "name": "Thon en boîte",
+      "categoryId": "cat-1",
+      "unit": "boîte"
+    },
+    {
+      "id": "item-27",
+      "name": "Boulettes de bœuf",
+      "categoryId": "cat-1",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-28",
+      "name": "Œufs",
+      "categoryId": "cat-1",
+      "unit": "unité"
+    },
+    {
+      "id": "item-29",
+      "name": "Carottes",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-30",
+      "name": "Pommes de terre",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-31",
+      "name": "Champignons de Paris",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-32",
+      "name": "Oignons",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-33",
+      "name": "Oignon rouge",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-34",
+      "name": "Échalote",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-35",
+      "name": "Ail",
+      "categoryId": "cat-2",
+      "unit": "gousse"
+    },
+    {
+      "id": "item-36",
+      "name": "Tomates",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-37",
+      "name": "Tomates cerises",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-38",
+      "name": "Tomates concassées",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-39",
+      "name": "Poivron",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-40",
+      "name": "Courgettes",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-41",
+      "name": "Aubergines",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-42",
+      "name": "Haricots verts",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-43",
+      "name": "Petits pois",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-44",
+      "name": "Épinards frais",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-45",
+      "name": "Brocoli",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-46",
+      "name": "Salade",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-47",
+      "name": "Concombre",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-48",
+      "name": "Avocat",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-49",
+      "name": "Citron",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-50",
+      "name": "Citron vert",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-51",
+      "name": "Pomme",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-52",
+      "name": "Endive",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-53",
+      "name": "Navet",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-54",
+      "name": "Poireaux",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-55",
+      "name": "Céleri",
+      "categoryId": "cat-2",
+      "unit": "branche"
+    },
+    {
+      "id": "item-56",
+      "name": "Macédoine de légumes",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-57",
+      "name": "Haricots blancs",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-58",
+      "name": "Haricots rouges",
+      "categoryId": "cat-2",
+      "unit": "boîte"
+    },
+    {
+      "id": "item-59",
+      "name": "Maïs",
+      "categoryId": "cat-2",
+      "unit": "boîte"
+    },
+    {
+      "id": "item-60",
+      "name": "Pois chiches",
+      "categoryId": "cat-2",
+      "unit": "boîte"
+    },
+    {
+      "id": "item-61",
+      "name": "Gingembre frais",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-62",
+      "name": "Persil",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-63",
+      "name": "Coriandre fraîche",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-64",
+      "name": "Ciboulette",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-65",
+      "name": "Basilic frais",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-66",
+      "name": "Coleslaw",
+      "categoryId": "cat-2",
+      "unit": "unité"
+    },
+    {
+      "id": "item-67",
+      "name": "Légumes de saison",
+      "categoryId": "cat-2",
+      "unit": "g"
+    },
+    {
+      "id": "item-68",
+      "name": "Crème fraîche",
+      "categoryId": "cat-3",
+      "unit": "ml"
+    },
+    {
+      "id": "item-69",
+      "name": "Lait",
+      "categoryId": "cat-3",
+      "unit": "ml"
+    },
+    {
+      "id": "item-70",
+      "name": "Lait de coco",
+      "categoryId": "cat-3",
+      "unit": "ml"
+    },
+    {
+      "id": "item-71",
+      "name": "Beurre",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-72",
+      "name": "Fromage râpé",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-73",
+      "name": "Comté râpé",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-74",
+      "name": "Parmesan",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-75",
+      "name": "Mozzarella",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-76",
+      "name": "Mozzarella de Bufala",
+      "categoryId": "cat-3",
+      "unit": "unité"
+    },
+    {
+      "id": "item-77",
+      "name": "Cheddar râpé",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-78",
+      "name": "Chèvre frais",
+      "categoryId": "cat-3",
+      "unit": "unité"
+    },
+    {
+      "id": "item-79",
+      "name": "Boursin",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-80",
+      "name": "Vache qui rit",
+      "categoryId": "cat-3",
+      "unit": "portion"
+    },
+    {
+      "id": "item-81",
+      "name": "Fromage à croque",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-82",
+      "name": "Gouda",
+      "categoryId": "cat-3",
+      "unit": "tranche"
+    },
+    {
+      "id": "item-83",
+      "name": "Reblochon",
+      "categoryId": "cat-3",
+      "unit": "unité"
+    },
+    {
+      "id": "item-84",
+      "name": "Fromage à raclette",
+      "categoryId": "cat-3",
+      "unit": "g"
+    },
+    {
+      "id": "item-85",
+      "name": "Fromage à tartiflette",
+      "categoryId": "cat-3",
+      "unit": "unité"
+    },
+    {
+      "id": "item-86",
+      "name": "Fromage",
+      "categoryId": "cat-3",
+      "unit": "unité"
+    },
+    {
+      "id": "item-87",
+      "name": "Mme Loic",
+      "categoryId": "cat-3",
+      "unit": "pot"
+    },
+    {
+      "id": "item-88",
+      "name": "Vin rouge",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-89",
+      "name": "Vin blanc",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-90",
+      "name": "Cidre brut",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-91",
+      "name": "Bouillon de bœuf",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-92",
+      "name": "Bouillon de volaille",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-93",
+      "name": "Bouillon de légumes",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-94",
+      "name": "Fond de veau",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-95",
+      "name": "Fond de volaille",
+      "categoryId": "cat-4",
+      "unit": "cuillère à café"
+    },
+    {
+      "id": "item-96",
+      "name": "Concentré de tomates",
+      "categoryId": "cat-4",
+      "unit": "cuillère à soupe"
+    },
+    {
+      "id": "item-97",
+      "name": "Sauce tomate",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-98",
+      "name": "Sauce tomate cuisinée",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-99",
+      "name": "Jus de tomate",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-100",
+      "name": "Bolognaise",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-101",
+      "name": "Sauce soja",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-102",
+      "name": "Sauce barbecue",
+      "categoryId": "cat-4",
+      "unit": "cuillère à soupe"
+    },
+    {
+      "id": "item-103",
+      "name": "Vinaigre balsamique",
+      "categoryId": "cat-4",
+      "unit": "cuillère à soupe"
+    },
+    {
+      "id": "item-104",
+      "name": "Vinaigre de cidre",
+      "categoryId": "cat-4",
+      "unit": "cuillère à soupe"
+    },
+    {
+      "id": "item-105",
+      "name": "Moutarde",
+      "categoryId": "cat-4",
+      "unit": "cuillère à soupe"
+    },
+    {
+      "id": "item-106",
+      "name": "Moutarde à l'ancienne",
+      "categoryId": "cat-4",
+      "unit": "cuillère à café"
+    },
+    {
+      "id": "item-107",
+      "name": "Ketchup",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-108",
+      "name": "Maïzena",
+      "categoryId": "cat-4",
+      "unit": "cuillère à café"
+    },
+    {
+      "id": "item-109",
+      "name": "Farine",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-110",
+      "name": "Sauce coleslaw",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-111",
+      "name": "Épices guacamole",
+      "categoryId": "cat-4",
+      "unit": "sachet"
+    },
+    {
+      "id": "item-112",
+      "name": "Sel",
+      "categoryId": "cat-4",
+      "unit": "pincée"
+    },
+    {
+      "id": "item-113",
+      "name": "Poivre",
+      "categoryId": "cat-4",
+      "unit": "pincée"
+    },
+    {
+      "id": "item-114",
+      "name": "Paprika",
+      "categoryId": "cat-4",
+      "unit": "cuillère à café"
+    },
+    {
+      "id": "item-115",
+      "name": "Cumin",
+      "categoryId": "cat-4",
+      "unit": "cuillère à café"
+    },
+    {
+      "id": "item-116",
+      "name": "Curcuma",
+      "categoryId": "cat-4",
+      "unit": "cuillère à café"
+    },
+    {
+      "id": "item-117",
+      "name": "Piment doux",
+      "categoryId": "cat-4",
+      "unit": "cuillère à café"
+    },
+    {
+      "id": "item-118",
+      "name": "Gingembre moulu",
+      "categoryId": "cat-4",
+      "unit": "cuillère à café"
+    },
+    {
+      "id": "item-119",
+      "name": "Ras el hanout",
+      "categoryId": "cat-4",
+      "unit": "cuillère à soupe"
+    },
+    {
+      "id": "item-120",
+      "name": "Noix de muscade",
+      "categoryId": "cat-4",
+      "unit": "pincée"
+    },
+    {
+      "id": "item-121",
+      "name": "Cornichons",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-122",
+      "name": "Olives vertes",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-123",
+      "name": "Citron confit",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-124",
+      "name": "Noix",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-125",
+      "name": "Herbes de Provence",
+      "categoryId": "cat-4",
+      "unit": "pincée"
+    },
+    {
+      "id": "item-126",
+      "name": "Thym",
+      "categoryId": "cat-4",
+      "unit": "branche"
+    },
+    {
+      "id": "item-127",
+      "name": "Laurier",
+      "categoryId": "cat-4",
+      "unit": "feuille"
+    },
+    {
+      "id": "item-128",
+      "name": "Bouquet garni",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-129",
+      "name": "Pâtes",
+      "categoryId": "cat-4",
+      "unit": "paquet"
+    },
+    {
+      "id": "item-130",
+      "name": "Pâtes fraîches",
+      "categoryId": "cat-4",
+      "unit": "paquet"
+    },
+    {
+      "id": "item-131",
+      "name": "Fusilli",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-132",
+      "name": "Petites pâtes",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-133",
+      "name": "Feuilles de lasagnes",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-134",
+      "name": "Pâtes à pizza",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-135",
+      "name": "Sauce pizza",
+      "categoryId": "cat-4",
+      "unit": "ml"
+    },
+    {
+      "id": "item-136",
+      "name": "Riz",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-137",
+      "name": "Riz long grain",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-138",
+      "name": "Riz à risotto",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-139",
+      "name": "Semoule",
+      "categoryId": "cat-4",
+      "unit": "g"
+    },
+    {
+      "id": "item-140",
+      "name": "Wraps",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-141",
+      "name": "Pain de mie",
+      "categoryId": "cat-4",
+      "unit": "tranche"
+    },
+    {
+      "id": "item-142",
+      "name": "Bagels",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-143",
+      "name": "Croûtons",
+      "categoryId": "cat-4",
+      "unit": "unité"
+    },
+    {
+      "id": "item-144",
+      "name": "Miel",
+      "categoryId": "cat-5",
+      "unit": "cuillère à soupe"
+    },
+    {
+      "id": "item-145",
+      "name": "Confiture",
+      "categoryId": "cat-5",
+      "unit": "unité"
+    },
+    {
+      "id": "item-146",
+      "name": "Nutella",
+      "categoryId": "cat-5",
+      "unit": "unité"
+    },
+    {
+      "id": "item-147",
+      "name": "Sucre en poudre",
+      "categoryId": "cat-5",
+      "unit": "g"
+    },
+    {
+      "id": "item-148",
+      "name": "Jus d'ananas",
+      "categoryId": "cat-5",
+      "unit": "ml"
+    },
+    {
+      "id": "item-149",
+      "name": "Ananas",
+      "categoryId": "cat-5",
+      "unit": "tranche"
+    },
+    {
+      "id": "item-150",
+      "name": "Frites",
+      "categoryId": "cat-6",
+      "unit": "paquet"
+    },
+    {
+      "id": "item-151",
+      "name": "Filet de poisson pané",
+      "categoryId": "cat-6",
+      "unit": "pièce"
+    },
+    {
+      "id": "item-152",
+      "name": "Sauce au poivre",
+      "categoryId": "cat-6",
+      "unit": "unité"
+    },
+    {
+      "id": "item-153",
+      "name": "Baguette",
+      "categoryId": "cat-7",
+      "unit": "unité"
+    }
+  ],
+  "meals": [
+    {
+      "id": "meal-1",
+      "name": "Filet mignon carottes pommes de terre",
+      "items": [
+        {
+          "itemId": "item-1",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-29",
+          "quantity": 5
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 400
+        }
+      ]
+    },
+    {
+      "id": "meal-2",
+      "name": "Bœuf bourguignon",
+      "items": [
+        {
+          "itemId": "item-2",
+          "quantity": 1000
+        },
+        {
+          "itemId": "item-11",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-31",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-29",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-88",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-91",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-96",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-128",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-3",
+      "name": "Paupiettes petits pois pommes de terre",
+      "items": [
+        {
+          "itemId": "item-16",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-11",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 600
+        },
+        {
+          "itemId": "item-43",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-31",
+          "quantity": 150
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-94",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 30
+        },
+        {
+          "itemId": "item-62",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-4",
+      "name": "Effiloché de bœuf braisé",
+      "items": [
+        {
+          "itemId": "item-3",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-91",
+          "quantity": 150
+        },
+        {
+          "itemId": "item-102",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-101",
+          "quantity": 45
+        },
+        {
+          "itemId": "item-144",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-103",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-5",
+      "name": "Tomates farcies riz",
+      "items": [
+        {
+          "itemId": "item-5",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-36",
+          "quantity": 8
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-91",
+          "quantity": 150
+        },
+        {
+          "itemId": "item-125",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-62",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-6",
+      "name": "Côtes de porc champignons pommes de terre",
+      "items": [
+        {
+          "itemId": "item-8",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-42",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-31",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-34",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-92",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-105",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-7",
+      "name": "Sauté de porc au cidre",
+      "items": [
+        {
+          "itemId": "item-9",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-11",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-29",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 600
+        },
+        {
+          "itemId": "item-94",
+          "quantity": 5
+        },
+        {
+          "itemId": "item-90",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-108",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-128",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 30
+        },
+        {
+          "itemId": "item-112",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-113",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-8",
+      "name": "Blanquette de poulet",
+      "items": [
+        {
+          "itemId": "item-12",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-31",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-29",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-92",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-28",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 300
+        }
+      ]
+    },
+    {
+      "id": "meal-9",
+      "name": "Œufs à la tomate",
+      "items": [
+        {
+          "itemId": "item-28",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-38",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-72",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-62",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-153",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-10",
+      "name": "Fusillis chèvre épinards",
+      "items": [
+        {
+          "itemId": "item-131",
+          "quantity": 350
+        },
+        {
+          "itemId": "item-78",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-44",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-11",
+      "name": "Soupe à l'oignon",
+      "items": [
+        {
+          "itemId": "item-32",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-73",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-109",
+          "quantity": 10
+        },
+        {
+          "itemId": "item-93",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-153",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-12",
+      "name": "Pâtes tomates mozza",
+      "items": [
+        {
+          "itemId": "item-130",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-98",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-76",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-65",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-13",
+      "name": "Gratin dauphinois salade",
+      "items": [
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 1000
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-69",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-120",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-14",
+      "name": "Pizza marguerite maison salade",
+      "items": [
+        {
+          "itemId": "item-134",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-135",
+          "quantity": 120
+        },
+        {
+          "itemId": "item-75",
+          "quantity": 300
+        },
+        {
+          "itemId": "item-65",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-15",
+      "name": "Riz tex mex salade",
+      "items": [
+        {
+          "itemId": "item-4",
+          "quantity": 300
+        },
+        {
+          "itemId": "item-77",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-137",
+          "quantity": 300
+        },
+        {
+          "itemId": "item-59",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-58",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-97",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-91",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-111",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-39",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-16",
+      "name": "Minestrone",
+      "items": [
+        {
+          "itemId": "item-132",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-56",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-57",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-96",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-99",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-74",
+          "quantity": 50
+        },
+        {
+          "itemId": "item-55",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-17",
+      "name": "Cordon bleu pâtes brocoli",
+      "items": [
+        {
+          "itemId": "item-19",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-45",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-129",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-18",
+      "name": "Wraps de thon avocat concombre",
+      "items": [
+        {
+          "itemId": "item-26",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-140",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-87",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-47",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-48",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-19",
+      "name": "Wraps saumon fumé",
+      "items": [
+        {
+          "itemId": "item-24",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-140",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-87",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-47",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-48",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-20",
+      "name": "Tartines rillettes de thon et salade",
+      "items": [
+        {
+          "itemId": "item-26",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-87",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-64",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-34",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-153",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-21",
+      "name": "Pâtes bolo",
+      "items": [
+        {
+          "itemId": "item-6",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-100",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-129",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-74",
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "id": "meal-22",
+      "name": "Croques monsieur",
+      "items": [
+        {
+          "itemId": "item-20",
+          "quantity": 8
+        },
+        {
+          "itemId": "item-141",
+          "quantity": 12
+        },
+        {
+          "itemId": "item-81",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-23",
+      "name": "Saumon pommes de terre haricots",
+      "items": [
+        {
+          "itemId": "item-23",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-42",
+          "quantity": 400
+        }
+      ]
+    },
+    {
+      "id": "meal-24",
+      "name": "Bagel dinde fromage",
+      "items": [
+        {
+          "itemId": "item-22",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-82",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-47",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-142",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "meal-25",
+      "name": "Poulet pommes de terre haricots verts",
+      "items": [
+        {
+          "itemId": "item-12",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-42",
+          "quantity": 400
+        }
+      ]
+    },
+    {
+      "id": "meal-26",
+      "name": "Soupe de légumes et tartines",
+      "items": [
+        {
+          "itemId": "item-67",
+          "quantity": 1000
+        },
+        {
+          "itemId": "item-153",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-86",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "meal-27",
+      "name": "Soupe de légumes et crêpes",
+      "items": [
+        {
+          "itemId": "item-67",
+          "quantity": 1000
+        },
+        {
+          "itemId": "item-109",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-145",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-146",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-147",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-69",
+          "quantity": 1000
+        },
+        {
+          "itemId": "item-71",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-28",
+          "quantity": 6
+        }
+      ]
+    },
+    {
+      "id": "meal-28",
+      "name": "Salade chèvre chaud",
+      "items": [
+        {
+          "itemId": "item-11",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-78",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-51",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-52",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-153",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-29",
+      "name": "Poulet miel soja riz salade",
+      "items": [
+        {
+          "itemId": "item-13",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-144",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-101",
+          "quantity": 60
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 300
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-30",
+      "name": "Gratin courgettes parmesan et œuf au plat",
+      "items": [
+        {
+          "itemId": "item-28",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-74",
+          "quantity": 50
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 350
+        },
+        {
+          "itemId": "item-40",
+          "quantity": 2
+        }
+      ]
+    },
+    {
+      "id": "meal-31",
+      "name": "Cabillaud au citron",
+      "items": [
+        {
+          "itemId": "item-25",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-49",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-93",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 250
+        }
+      ]
+    },
+    {
+      "id": "meal-32",
+      "name": "Poulet riz courgettes vache qui rit",
+      "items": [
+        {
+          "itemId": "item-12",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-40",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-92",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-80",
+          "quantity": 7
+        }
+      ]
+    },
+    {
+      "id": "meal-33",
+      "name": "Steak frites salade",
+      "items": [
+        {
+          "itemId": "item-6",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-150",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-34",
+      "name": "Lasagnes maison",
+      "items": [
+        {
+          "itemId": "item-6",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-133",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-100",
+          "quantity": 600
+        },
+        {
+          "itemId": "item-75",
+          "quantity": 125
+        },
+        {
+          "itemId": "item-69",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-71",
+          "quantity": 50
+        }
+      ]
+    },
+    {
+      "id": "meal-35",
+      "name": "Aubergines parmigiana",
+      "items": [
+        {
+          "itemId": "item-41",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-65",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-38",
+          "quantity": 700
+        },
+        {
+          "itemId": "item-88",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-75",
+          "quantity": 125
+        },
+        {
+          "itemId": "item-74",
+          "quantity": 80
+        }
+      ]
+    },
+    {
+      "id": "meal-36",
+      "name": "Tartiflette",
+      "items": [
+        {
+          "itemId": "item-11",
+          "quantity": 150
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 600
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-85",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-37",
+      "name": "Apéro dînatoire",
+      "items": []
+    },
+    {
+      "id": "meal-38",
+      "name": "Raclette express",
+      "items": [
+        {
+          "itemId": "item-21",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 600
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-84",
+          "quantity": 150
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 150
+        },
+        {
+          "itemId": "item-121",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-39",
+      "name": "Filet mignon au reblochon",
+      "items": [
+        {
+          "itemId": "item-1",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-34",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-51",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-126",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-124",
+          "quantity": 50
+        },
+        {
+          "itemId": "item-89",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-106",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-144",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-83",
+          "quantity": 0.5
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 200
+        }
+      ]
+    },
+    {
+      "id": "meal-40",
+      "name": "Fish and chips",
+      "items": [
+        {
+          "itemId": "item-151",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-150",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-66",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-110",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-41",
+      "name": "Taco bowl",
+      "items": [
+        {
+          "itemId": "item-4",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-50",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-48",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-37",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-33",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-77",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-111",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-59",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 250
+        }
+      ]
+    },
+    {
+      "id": "meal-42",
+      "name": "Poulet huli huli",
+      "items": [
+        {
+          "itemId": "item-13",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-107",
+          "quantity": 50
+        },
+        {
+          "itemId": "item-101",
+          "quantity": 60
+        },
+        {
+          "itemId": "item-104",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-61",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-148",
+          "quantity": 125
+        },
+        {
+          "itemId": "item-149",
+          "quantity": 8
+        }
+      ]
+    },
+    {
+      "id": "meal-43",
+      "name": "Tajine kefta",
+      "items": [
+        {
+          "itemId": "item-4",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-47",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-36",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-33",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-62",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-97",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-91",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-114",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-115",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-139",
+          "quantity": 300
+        }
+      ]
+    },
+    {
+      "id": "meal-44",
+      "name": "Poulet coco réunionnais",
+      "items": [
+        {
+          "itemId": "item-15",
+          "quantity": 800
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-61",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-70",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-116",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-126",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-38",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 250
+        }
+      ]
+    },
+    {
+      "id": "meal-45",
+      "name": "Porc au caramel",
+      "items": [
+        {
+          "itemId": "item-10",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-45",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-101",
+          "quantity": 45
+        },
+        {
+          "itemId": "item-144",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 250
+        }
+      ]
+    },
+    {
+      "id": "meal-46",
+      "name": "Chili con carne",
+      "items": [
+        {
+          "itemId": "item-4",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-39",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-59",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-58",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-38",
+          "quantity": 400
+        },
+        {
+          "itemId": "item-96",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-115",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-114",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-117",
+          "quantity": 0.5
+        },
+        {
+          "itemId": "item-136",
+          "quantity": 300
+        }
+      ]
+    },
+    {
+      "id": "meal-47",
+      "name": "Couscous",
+      "items": [
+        {
+          "itemId": "item-14",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-18",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-29",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-40",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-53",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-60",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-139",
+          "quantity": 300
+        },
+        {
+          "itemId": "item-119",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-96",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-92",
+          "quantity": 250
+        }
+      ]
+    },
+    {
+      "id": "meal-48",
+      "name": "Tajine aux olives",
+      "items": [
+        {
+          "itemId": "item-13",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 800
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-123",
+          "quantity": 0.5
+        },
+        {
+          "itemId": "item-62",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-63",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-122",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-118",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-116",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-49",
+      "name": "Purée au comté et jambon",
+      "items": [
+        {
+          "itemId": "item-20",
+          "quantity": 6
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 1000
+        },
+        {
+          "itemId": "item-73",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-50",
+      "name": "Steak purée et légume de saison",
+      "items": [
+        {
+          "itemId": "item-7",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-67",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 1000
+        }
+      ]
+    },
+    {
+      "id": "meal-51",
+      "name": "Magret de canard aux pommes de terre",
+      "items": [
+        {
+          "itemId": "item-17",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 800
+        },
+        {
+          "itemId": "item-34",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-35",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-62",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-126",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-42",
+          "quantity": 400
+        }
+      ]
+    },
+    {
+      "id": "meal-52",
+      "name": "Tartines et salade ou soupe",
+      "items": [
+        {
+          "itemId": "item-153",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-53",
+      "name": "Soupe poireaux boursin et croûtons",
+      "items": [
+        {
+          "itemId": "item-54",
+          "quantity": 3
+        },
+        {
+          "itemId": "item-40",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-32",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-79",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-153",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-143",
+          "quantity": 1
+        }
+      ]
+    },
+    {
+      "id": "meal-54",
+      "name": "Risotto champignons et salade",
+      "items": [
+        {
+          "itemId": "item-34",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-31",
+          "quantity": 300
+        },
+        {
+          "itemId": "item-29",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-62",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-46",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-138",
+          "quantity": 300
+        },
+        {
+          "itemId": "item-89",
+          "quantity": 200
+        },
+        {
+          "itemId": "item-95",
+          "quantity": 2
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 100
+        },
+        {
+          "itemId": "item-74",
+          "quantity": 10
+        }
+      ]
+    },
+    {
+      "id": "meal-55",
+      "name": "Purée boulettes sauce au poivre",
+      "items": [
+        {
+          "itemId": "item-27",
+          "quantity": 20
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 1000
+        },
+        {
+          "itemId": "item-64",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-152",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-42",
+          "quantity": 400
+        }
+      ]
+    },
+    {
+      "id": "meal-56",
+      "name": "Suprême de poulet",
+      "items": [
+        {
+          "itemId": "item-12",
+          "quantity": 4
+        },
+        {
+          "itemId": "item-31",
+          "quantity": 250
+        },
+        {
+          "itemId": "item-34",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-30",
+          "quantity": 500
+        },
+        {
+          "itemId": "item-62",
+          "quantity": 1
+        },
+        {
+          "itemId": "item-68",
+          "quantity": 200
+        }
+      ]
+    }
+  ]
+}

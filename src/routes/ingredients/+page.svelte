@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { toast } from "svelte-sonner";
   import PlusIcon from "@lucide/svelte/icons/plus";
   import XIcon from "@lucide/svelte/icons/x";
   import { app } from "$lib/store.svelte";
@@ -30,11 +29,6 @@
     newItemUnit = "";
   }
 
-  function loadDefaults() {
-    app.loadDefaultCatalog();
-    toast.success("Ingrédients par défaut chargés");
-  }
-
   function countFor(categoryId: string) {
     return app.state.items.filter((i) => i.categoryId === categoryId).length;
   }
@@ -42,9 +36,6 @@
 
 <div class="mb-5 flex flex-wrap items-center gap-3">
   <h1 class="text-xl font-semibold">Ingrédients</h1>
-  <Button variant="outline" class="ml-auto" onclick={loadDefaults}>
-    Charger les ingrédients par défaut
-  </Button>
 </div>
 
 <div class="grid grid-cols-1 gap-5 lg:grid-cols-3">

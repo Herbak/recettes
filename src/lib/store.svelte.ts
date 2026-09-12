@@ -9,7 +9,6 @@ import {
   type MealItem,
 } from "./types";
 import { randomizePlan } from "./random";
-import { DEFAULT_CATALOG } from "./seed";
 import {
   normalizeName,
   serializeExport,
@@ -36,11 +35,7 @@ class AppStore {
 
   async init() {
     const data = await this.#load();
-    if (data) {
-      this.state = this.#normalize(data);
-    } else {
-      this.loadDefaultCatalog();
-    }
+    if (data) this.state = this.#normalize(data);
     this.ready = true;
     $effect.root(() => {
       $effect(() => {
@@ -142,31 +137,6 @@ class AppStore {
     this.state.items = this.state.items.filter((i) => i.id !== id);
     for (const meal of this.state.meals) {
       meal.items = meal.items.filter((mi) => mi.itemId !== id);
-    }
-  }
-
-  loadDefaultCatalog() {
-    for (const seedCategory of DEFAULT_CATALOG) {
-      let category = this.state.categories.find(
-        (c) => c.name.toLowerCase() === seedCategory.name.toLowerCase(),
-      );
-      if (!category) {
-        category = { id: uid(), name: seedCategory.name };
-        this.state.categories.push(category);
-      }
-      for (const seedItem of seedCategory.items) {
-        const exists = this.state.items.some(
-          (i) => i.name.toLowerCase() === seedItem.name.toLowerCase(),
-        );
-        if (!exists) {
-          this.state.items.push({
-            id: uid(),
-            name: seedItem.name,
-            categoryId: category.id,
-            unit: seedItem.unit,
-          });
-        }
-      }
     }
   }
 
