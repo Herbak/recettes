@@ -3,7 +3,7 @@
   import CopyIcon from "@lucide/svelte/icons/copy";
   import { app } from "$lib/store.svelte";
   import { buildShoppingList, formatQty, shoppingListToText } from "$lib/shopping";
-  import { DAYS, type Meal } from "$lib/types";
+  import { type Meal } from "$lib/types";
   import { Button } from "$lib/components/ui/button/index.js";
   import { Badge } from "$lib/components/ui/badge/index.js";
   import { Checkbox } from "$lib/components/ui/checkbox/index.js";
@@ -54,21 +54,6 @@
     </Card.Content>
   </Card.Root>
 {:else}
-  <Card.Root class="mb-5">
-    <Card.Header>
-      <Card.Title class="text-sm text-muted-foreground">Menu de la semaine</Card.Title>
-    </Card.Header>
-    <Card.Content class="flex flex-wrap gap-2">
-      {#each app.state.plan as day (day.day)}
-        {#if day.chosen}
-          <Badge variant="secondary">
-            <span class="font-medium">{DAYS[day.day]}</span> · {app.mealById.get(day.chosen)?.name ?? "?"}
-          </Badge>
-        {/if}
-      {/each}
-    </Card.Content>
-  </Card.Root>
-
   <div class="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
     {#each groups as group (group.categoryName)}
       <Card.Root>
@@ -98,9 +83,11 @@
                       {line.unit}
                     </span>
                   </div>
-                  <p class="truncate text-xs text-muted-foreground">
-                    {line.meals.join(", ")}
-                  </p>
+                  <div class="text-xs text-muted-foreground">
+                    {#each line.meals as meal (meal)}
+                      <span class="block truncate">{meal}</span>
+                    {/each}
+                  </div>
                 </div>
               </li>
             {/each}
