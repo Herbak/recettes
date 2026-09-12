@@ -1,0 +1,37 @@
+name: build-macos
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ["app-v*"]
+
+jobs:
+  build:
+    permissions:
+      contents: write
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with: { version: 10 }
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+          cache: pnpm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-apple-darwin
+      - uses: swatinem/rust-cache@v2
+        with:
+          workspaces: "./src-tauri -> target"
+      - run: pnpm install --frozen-lockfile
+      - uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: app-v__VERSION__
+          releaseName: "Recettes v__VERSION__"
+          releaseBody: "Téléchargez le .dmg ci-dessous."
+          releaseDraft: true
+          prerelease: false
+          args: "--target aarch64-apple-darwin"
