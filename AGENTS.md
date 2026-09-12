@@ -51,7 +51,8 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
 - Installs predating the updater must be replaced manually once.
 
 ## Architecture
-- `src/lib/types.ts` — data model (`Category`, `Item`, `Meal`, `DayPlan`, `AppState`).
+- `src/lib/types.ts` — data model (`Category`, `Item`, `Meal`, `DayPlan`,
+  `CustomShoppingItem`, `AppState`).
   `Item.unit` is a comma-separated list of allowed units (ex: `"g, unité"`) and
   `MealItem.unit` optionally overrides which one a meal line uses; helpers
   `itemUnits` / `primaryUnit` / `lineUnit`.
@@ -59,11 +60,12 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   randomize/validate). Persists via `tauri-plugin-store` to `recettes.json` in the
   app data dir; falls back to `localStorage` when running in a plain browser.
 - `src/lib/random.ts` — one pick per day from that day's candidate meals
-- `src/lib/shopping.ts` — aggregation of chosen meals into a category-grouped list
+- `src/lib/shopping.ts` — aggregation of chosen meals into a category-grouped list;
+  `buildShoppingList` also appends free-form `customShopping` items (`custom: true`)
 - `src/lib/transfer.ts` — content export/import (`serializeExport`, `parseExport`,
   `normalizeName`); the store adds `exportContent`/`replaceContent`/`mergeContent`
-- `src/routes/` — `+layout.svelte` shell; `/` Semaine, `/repas`, `/ingredients`,
-  `/courses`, `/donnees` (export/import content)
+- `src/routes/` — `+layout.svelte` shell; `/` Cette semaine, `/creation-du-menu`
+  (planner), `/repas`, `/ingredients`, `/courses`, `/donnees` (export/import content)
 - `src-tauri/` — minimal Rust host registering `tauri-plugin-store`,
   `tauri-plugin-opener`, `tauri-plugin-dialog` and `tauri-plugin-fs`
   (permissions in `capabilities/default.json`)
@@ -73,14 +75,15 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   theme tokens live in `src/app.css`; `cn` helper in `src/lib/utils.ts`.
 - Components in `src/lib/components/ui/*`, imported as
   `$lib/components/ui/<name>/index.js` (plus `Toaster` from `sonner`, `toast` from
-  `svelte-sonner`). Installed: button, input, label, card, badge, select, checkbox,
-  separator, table, alert-dialog, alert, sonner, sidebar, tooltip, sheet, skeleton,
-  dialog.
+  `svelte-sonner`). Installed: button, button-group, input, label, card, badge,
+  select, checkbox, separator, table, alert-dialog, alert, sonner, sidebar, tooltip,
+  sheet, skeleton, dialog.
 - App shell uses the sidebar layout: `src/lib/components/app-sidebar.svelte` inside
   `Sidebar.Provider` + `Sidebar.Inset` in `src/routes/+layout.svelte` (collapses to
   icons, toggle via `Sidebar.Trigger`). Dark mode is handled by `mode-watcher`
   (`<ModeWatcher />` + `toggleMode` button in the header); `.dark` tokens live in
   `src/app.css`.
-- Add more with `pnpm dlx shadcn-svelte@latest add <name>`. The CLI is interactive;
-  for non-interactive runs pass the preset `--preset baKeeG` and pipe `y` when it
-  prompts (e.g. `"y`n" | pnpm dlx shadcn-svelte@latest ...`).
+- Add more with `pnpm dlx shadcn-svelte@latest add <name> -y`. It still prompts to
+  overwrite already-installed files; add `-o` to overwrite all
+  (`pnpm dlx shadcn-svelte@latest add <name> -y -o`). The `--preset` flag no longer
+  exists in the current CLI.

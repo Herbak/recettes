@@ -4,6 +4,7 @@ import {
   uid,
   type AppState,
   type Category,
+  type CustomShoppingItem,
   type Item,
   type Meal,
   type MealItem,
@@ -45,7 +46,12 @@ class AppStore {
   shoppingChecked = $state<string[]>([]);
 
   shoppingGroups = $derived(
-    buildShoppingList(this.chosenMeals, this.itemById, this.categoryById),
+    buildShoppingList(
+      this.chosenMeals,
+      this.itemById,
+      this.categoryById,
+      this.state.customShopping,
+    ),
   );
 
   shoppingTotal = $derived(
@@ -95,6 +101,7 @@ class AppStore {
       items: data.items ?? [],
       meals: data.meals ?? [],
       plan,
+      customShopping: Array.isArray(data.customShopping) ? data.customShopping : [],
       validated: data.validated ?? false,
     };
   }
@@ -146,6 +153,9 @@ class AppStore {
     this.state.categories = this.state.categories.filter((c) => c.id !== id);
     for (const item of this.state.items) {
       if (item.categoryId === id) item.categoryId = "";
+    }
+    for (const custom of this.state.customShopping) {
+      if (custom.categoryId === id) custom.categoryId = "";
     }
   }
 
@@ -252,6 +262,27 @@ class AppStore {
     this.shoppingChecked = [];
   }
 
+  // --- Custom shopping items ---
+  addCustomShopping(name: string, categoryId: string): CustomShoppingItem | null {
+    const trimmed = name.trim();
+    if (!trimmed) return null;
+    const item: CustomShoppingItem = { id: uid(), name: trimmed, categoryId };
+    this.state.customShopping.push(item);
+    return item;
+  }
+
+  updateCustomShopping(id: string, name: string) {
+    const item = this.state.customShopping.find((c) => c.id === id);
+    if (item) item.name = name.trim();
+  }
+
+  removeCustomShopping(id: string) {
+    this.state.customShopping = this.state.customShopping.filter((c) => c.id !== id);
+    this.shoppingChecked = this.shoppingChecked.filter(
+      (k) => !k.startsWith(`${id}\u0000`),
+    );
+  }
+
   // --- Export / Import ---
   exportContent(): string {
     return serializeExport(this.state);
@@ -265,6 +296,7 @@ class AppStore {
       items: meal.items.map((line) => ({ ...line })),
     }));
     this.state.plan = emptyState().plan;
+    this.state.customShopping = [];
     this.state.validated = false;
     this.shoppingChecked = [];
   }

@@ -1,4 +1,10 @@
-import { lineUnit, type Category, type Item, type Meal } from "./types";
+import {
+  lineUnit,
+  type Category,
+  type CustomShoppingItem,
+  type Item,
+  type Meal,
+} from "./types";
 
 export interface ShoppingLine {
   itemId: string;
@@ -6,6 +12,7 @@ export interface ShoppingLine {
   unit: string;
   total: number;
   meals: string[];
+  custom?: boolean;
 }
 
 export interface ShoppingGroup {
@@ -23,6 +30,7 @@ export function buildShoppingList(
   chosenMeals: Meal[],
   items: Map<string, Item>,
   categories: Map<string, Category>,
+  customItems: CustomShoppingItem[] = [],
 ): ShoppingGroup[] {
   const agg = new Map<
     string,
@@ -67,6 +75,28 @@ export function buildShoppingList(
     groups.set(key, group);
   }
 
+  for (const custom of customItems) {
+    const catId = custom.categoryId;
+    const catName = catId
+      ? (categories.get(catId)?.name ?? "Autres")
+      : "Non classé";
+    const key = catId || "__none__";
+
+    const group =
+      groups.get(key) ??
+      ({ categoryId: catId || null, categoryName: catName, lines: [] } as ShoppingGroup);
+
+    group.lines.push({
+      itemId: custom.id,
+      itemName: custom.name,
+      unit: "",
+      total: 0,
+      meals: [],
+      custom: true,
+    });
+    groups.set(key, group);
+  }
+
   const result = [...groups.values()];
   result.sort((a, b) => a.categoryName.localeCompare(b.categoryName, "fr"));
   for (const group of result) {
@@ -83,6 +113,10 @@ export function shoppingListToText(groups: ShoppingGroup[]): string {
   for (const group of groups) {
     lines.push(`${group.categoryName}`);
     for (const line of group.lines) {
+      if (line.custom) {
+        lines.push(`  - ${line.itemName}`);
+        continue;
+      }
       const qty = `${formatQty(line.total)}${line.unit ? " " + line.unit : ""}`;
       lines.push(`  - ${line.itemName} : ${qty}`);
     }

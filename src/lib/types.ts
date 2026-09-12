@@ -28,11 +28,18 @@ export interface DayPlan {
   chosen: string | null;
 }
 
+export interface CustomShoppingItem {
+  id: string;
+  name: string;
+  categoryId: string;
+}
+
 export interface AppState {
   categories: Category[];
   items: Item[];
   meals: Meal[];
   plan: DayPlan[];
+  customShopping: CustomShoppingItem[];
   validated: boolean;
 }
 
@@ -77,6 +84,7 @@ export function emptyState(): AppState {
       candidates: [],
       chosen: null,
     })),
+    customShopping: [],
     validated: false,
   };
 }
