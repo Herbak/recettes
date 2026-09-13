@@ -63,6 +63,9 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   (once per meal until "Créer une nouvelle semaine" clears `counted` and the
   free-form `customShopping` items, which only apply to one week); local-only,
   not exported. The planner tints candidate chips by count.
+  Shopping checkboxes (`AppState.shoppingChecked`) are persisted; "Valider la
+  semaine" unchecks the recipe lines only, while "Créer une nouvelle semaine"
+  clears everything (custom items + checks).
 - `src/lib/random.ts` — one pick per day from that day's candidate meals,
   weighted by `AppState.usage` (already-eaten meals are less likely)
 - `src/lib/shopping.ts` — aggregation of chosen meals into a category-grouped list;

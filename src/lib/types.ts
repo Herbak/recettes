@@ -42,6 +42,7 @@ export interface AppState {
   customShopping: CustomShoppingItem[];
   usage: Record<string, number>;
   counted: string[];
+  shoppingChecked: string[];
   validated: boolean;
 }
 
@@ -89,6 +90,7 @@ export function emptyState(): AppState {
     customShopping: [],
     usage: {},
     counted: [],
+    shoppingChecked: [],
     validated: false,
   };
 }

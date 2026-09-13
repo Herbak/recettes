@@ -43,8 +43,6 @@ class AppStore {
       .filter((m): m is Meal => !!m),
   );
 
-  shoppingChecked = $state<string[]>([]);
-
   shoppingGroups = $derived(
     buildShoppingList(
       this.chosenMeals,
@@ -62,8 +60,9 @@ class AppStore {
     this.shoppingGroups.reduce(
       (n, g) =>
         n +
-        g.lines.filter((l) => !this.shoppingChecked.includes(`${l.itemId}\u0000${l.unit}`))
-          .length,
+        g.lines.filter(
+          (l) => !this.state.shoppingChecked.includes(`${l.itemId}\u0000${l.unit}`),
+        ).length,
       0,
     ),
   );
@@ -110,6 +109,9 @@ class AppStore {
       usage,
       counted: Array.isArray(data.counted)
         ? data.counted.filter((id) => mealIds.has(id))
+        : [],
+      shoppingChecked: Array.isArray(data.shoppingChecked)
+        ? data.shoppingChecked
         : [],
       validated: data.validated ?? false,
     };
@@ -242,7 +244,6 @@ class AppStore {
   randomize() {
     this.state.plan = randomizePlan(this.state.plan, this.state.usage);
     this.state.validated = false;
-    this.shoppingChecked = [];
   }
 
   newWeek() {
@@ -252,7 +253,7 @@ class AppStore {
     this.state.customShopping = [];
     this.state.counted = [];
     this.state.validated = false;
-    this.shoppingChecked = [];
+    this.state.shoppingChecked = [];
   }
 
   validate() {
@@ -276,23 +277,29 @@ class AppStore {
     }
 
     this.state.counted = [...chosen];
+
+    const customIds = new Set(this.state.customShopping.map((item) => item.id));
+    this.state.shoppingChecked = this.state.shoppingChecked.filter((key) =>
+      customIds.has(key.split("\u0000")[0]),
+    );
+
     this.state.validated = true;
   }
 
   // --- Shopping list ---
   isShoppingChecked(itemId: string, unit: string): boolean {
-    return this.shoppingChecked.includes(`${itemId}\u0000${unit}`);
+    return this.state.shoppingChecked.includes(`${itemId}\u0000${unit}`);
   }
 
   toggleShopping(itemId: string, unit: string) {
     const key = `${itemId}\u0000${unit}`;
-    this.shoppingChecked = this.shoppingChecked.includes(key)
-      ? this.shoppingChecked.filter((k) => k !== key)
-      : [...this.shoppingChecked, key];
+    this.state.shoppingChecked = this.state.shoppingChecked.includes(key)
+      ? this.state.shoppingChecked.filter((k) => k !== key)
+      : [...this.state.shoppingChecked, key];
   }
 
   resetShopping() {
-    this.shoppingChecked = [];
+    this.state.shoppingChecked = [];
   }
 
   // --- Custom shopping items ---
@@ -311,7 +318,7 @@ class AppStore {
 
   removeCustomShopping(id: string) {
     this.state.customShopping = this.state.customShopping.filter((c) => c.id !== id);
-    this.shoppingChecked = this.shoppingChecked.filter(
+    this.state.shoppingChecked = this.state.shoppingChecked.filter(
       (k) => !k.startsWith(`${id}\u0000`),
     );
   }
@@ -333,7 +340,7 @@ class AppStore {
     this.state.usage = this.#pruneUsage(bundle.meals.map((m) => m.id));
     this.state.counted = [];
     this.state.validated = false;
-    this.shoppingChecked = [];
+    this.state.shoppingChecked = [];
   }
 
   resetUsage() {
