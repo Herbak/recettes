@@ -8,6 +8,7 @@ import {
   type Item,
   type Meal,
   type MealItem,
+  type Note,
 } from "./types";
 import { randomizePlan } from "./random";
 import { buildShoppingList } from "./shopping";
@@ -106,6 +107,7 @@ class AppStore {
       meals: data.meals ?? [],
       plan,
       customShopping: Array.isArray(data.customShopping) ? data.customShopping : [],
+      notes: Array.isArray(data.notes) ? data.notes : [],
       usage,
       counted: Array.isArray(data.counted)
         ? data.counted.filter((id) => mealIds.has(id))
@@ -321,6 +323,26 @@ class AppStore {
     this.state.shoppingChecked = this.state.shoppingChecked.filter(
       (k) => !k.startsWith(`${id}\u0000`),
     );
+  }
+
+  // --- Notes ---
+  addNote(text: string): Note | null {
+    const trimmed = text.trim();
+    if (!trimmed) return null;
+    const note: Note = { id: uid(), text: trimmed, createdAt: Date.now() };
+    this.state.notes.push(note);
+    return note;
+  }
+
+  updateNote(id: string, text: string) {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    const note = this.state.notes.find((n) => n.id === id);
+    if (note) note.text = trimmed;
+  }
+
+  removeNote(id: string) {
+    this.state.notes = this.state.notes.filter((n) => n.id !== id);
   }
 
   // --- Export / Import ---

@@ -34,12 +34,19 @@ export interface CustomShoppingItem {
   categoryId: string;
 }
 
+export interface Note {
+  id: string;
+  text: string;
+  createdAt: number;
+}
+
 export interface AppState {
   categories: Category[];
   items: Item[];
   meals: Meal[];
   plan: DayPlan[];
   customShopping: CustomShoppingItem[];
+  notes: Note[];
   usage: Record<string, number>;
   counted: string[];
   shoppingChecked: string[];
@@ -88,6 +95,7 @@ export function emptyState(): AppState {
       chosen: null,
     })),
     customShopping: [],
+    notes: [],
     usage: {},
     counted: [],
     shoppingChecked: [],

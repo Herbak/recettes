@@ -8,6 +8,7 @@
   import CarrotIcon from "@lucide/svelte/icons/carrot";
   import TagsIcon from "@lucide/svelte/icons/tags";
   import ShoppingCartIcon from "@lucide/svelte/icons/shopping-cart";
+  import StickyNoteIcon from "@lucide/svelte/icons/sticky-note";
   import DatabaseIcon from "@lucide/svelte/icons/database";
   import CheckIcon from "@lucide/svelte/icons/check";
   import ChefHatIcon from "@lucide/svelte/icons/chef-hat";
@@ -80,6 +81,19 @@
               {/if}
             </Sidebar.MenuBadge>
           {/if}
+        </Sidebar.MenuItem>
+        <Sidebar.MenuItem>
+          <Sidebar.MenuButton
+            isActive={page.url.pathname === "/notes"}
+            tooltipContent="Notes"
+          >
+            {#snippet child({ props })}
+              <a href="/notes" {...props}>
+                <StickyNoteIcon />
+                <span>Notes</span>
+              </a>
+            {/snippet}
+          </Sidebar.MenuButton>
         </Sidebar.MenuItem>
       </Sidebar.Menu>
     </Sidebar.Group>

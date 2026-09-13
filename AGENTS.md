@@ -65,7 +65,8 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
   not exported. The planner tints candidate chips by count.
   Shopping checkboxes (`AppState.shoppingChecked`) are persisted; "Valider la
   semaine" unchecks the recipe lines only, while "Créer une nouvelle semaine"
-  clears everything (custom items + checks).
+  clears everything (custom items + checks). Free-form `AppState.notes` are
+  persistent (local-only) and are not touched by "Créer une nouvelle semaine".
 - `src/lib/random.ts` — one pick per day from that day's candidate meals,
   weighted by `AppState.usage` (already-eaten meals are less likely)
 - `src/lib/shopping.ts` — aggregation of chosen meals into a category-grouped list;
@@ -74,8 +75,8 @@ Tauri 2 + SvelteKit 5 (runes) + TypeScript desktop app: a weekly menu randomizer
 - `src/lib/transfer.ts` — content export/import (`serializeExport`, `parseExport`,
   `normalizeName`); the store adds `exportContent`/`replaceContent`/`mergeContent`
 - `src/routes/` — `+layout.svelte` shell; `/` Cette semaine, `/creation-du-menu`
-  (planner), `/repas`, `/categories`, `/ingredients`, `/courses`, `/donnees`
-  (export/import content)
+  (planner), `/repas`, `/categories`, `/ingredients`, `/courses`, `/notes`,
+  `/donnees` (export/import content)
 - `src-tauri/` — minimal Rust host registering `tauri-plugin-store`,
   `tauri-plugin-opener`, `tauri-plugin-dialog` and `tauri-plugin-fs`
   (permissions in `capabilities/default.json`)
